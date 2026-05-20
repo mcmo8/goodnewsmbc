@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan a Visit | Good News Missionary Baptist Church</title>
+  <meta name="description" content="Plan your visit to Good News Missionary Baptist Church in Tracy, California. Sunday School 9:00 AM, Worship 10:30 AM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .expect-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+      margin-top: 60px;
+    }
+    .expect-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 36px 32px;
+    }
+    .expect-ico {
+      width: 56px; height: 56px; border-radius: var(--radius);
+      background: var(--cream-2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .expect-ico svg { width: 26px; color: var(--oxblood); }
+    .expect-card h3 {
+      font-family: 'Fraunces', serif; font-size: 22px; color: var(--ink);
+      margin-bottom: 12px; font-weight: 600;
+    }
+    .expect-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+
+    /* Service schedule */
+    .schedule-block { background: var(--navy); color: var(--cream); padding: 110px 0; }
+    .schedule-block .eyebrow { color: var(--gold-soft); }
+    .schedule-block .eyebrow::before { background: var(--gold-soft); }
+    .schedule-block .section-title { color: var(--cream); }
+    .schedule-block .section-lead { color: rgba(250,246,238,0.78); }
+    .schedule-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+      margin-top: 50px;
+    }
+    .schedule-card {
+      background: rgba(250,246,238,0.06);
+      border: 1px solid rgba(250,246,238,0.14);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex; align-items: center; gap: 22px;
+    }
+    .schedule-card .num {
+      font-family: 'Fraunces', serif; font-size: 38px; font-weight: 600;
+      color: var(--gold-soft); line-height: 1; min-width: 70px;
+    }
+    .schedule-card .num .ampm { font-size: 16px; color: rgba(250,246,238,0.6); margin-left: 4px; }
+    .schedule-card .name {
+      font-family: 'Fraunces', serif; font-size: 19px; color: var(--cream);
+      margin-bottom: 4px; font-weight: 600;
+    }
+    .schedule-card .day { font-size: 13px; color: rgba(250,246,238,0.66); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* Map + Contact form layout */
+    .map-block { padding: 110px 0; }
+    .map-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: start; }
+    .map-embed {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-md); aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--cream-2) 0%, var(--cream-3) 100%);
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: 0; }
+    .map-fallback {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--ink); padding: 32px; text-align: center;
+    }
+    .map-fallback svg { width: 56px; color: var(--oxblood); margin-bottom: 14px; }
+
+    /* Contact form */
+    .contact-form { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 38px; }
+    .contact-form h3 { font-family: 'Fraunces', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+    .contact-form p.sub { color: var(--muted); font-size: 14.5px; margin-bottom: 28px; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label {
+      display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 600; color: var(--oxblood); margin-bottom: 8px;
+    }
+    .form-row input, .form-row textarea, .form-row select {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid var(--line-strong); border-radius: var(--radius);
+      font-family: 'Inter', sans-serif; font-size: 14.5px; color: var(--ink);
+      background: var(--cream); transition: border-color 0.2s, background 0.2s;
+    }
+    .form-row input:focus, .form-row textarea:focus, .form-row select:focus {
+      outline: none; border-color: var(--oxblood); background: var(--white);
+    }
+    .form-row textarea { resize: vertical; min-height: 130px; }
+
+    /* Quick connect */
+    .quick-connect {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      margin-top: 60px;
+    }
+    .qc-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 28px;
+      display: flex; gap: 16px; align-items: center;
+    }
+    .qc-card .qc-ico {
+      width: 46px; height: 46px; border-radius: var(--radius);
+      background: var(--oxblood); color: var(--cream);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .qc-card .qc-ico svg { width: 22px; }
+    .qc-card .qc-label { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .qc-card .qc-value { font-family: 'Fraunces', serif; font-size: 17px; color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 920px) {
+      .expect-grid { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: 1fr; }
+      .map-grid { grid-template-columns: 1fr; }
+      .quick-connect { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img class="brand-mark" src="images/logo.png" alt="Good News MBC" />
+        <div class="brand-stack">
+          <span class="brand-name">Good News</span>
+          <span class="brand-tag">Missionary Baptist Church · Tracy, CA</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html" class="active">Visit</a>
+        <a href="give.html">Give</a>
+        <a href="visit.html" class="btn btn-primary">Plan a Visit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container">
+      <span class="hero-eyebrow">Plan Your Visit</span>
+      <h1 class="display">We can't wait to meet you.</h1>
+      <p>Whether it has been a long time since you stepped into a church or you're looking for a home, you are welcome at Good News. Come as you are. There's a seat for you.</p>
+    </div>
+  </header>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="block">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">What to Expect</span>
+        <h2 class="section-title">Your first Sunday with us.</h2>
+        <p class="section-lead">A few things to know before you walk through our doors at 77 West 1st Street.</p>
+      </div>
+      <div class="expect-grid">
+
+        <div class="expect-card">
+          <div class="expect-ico">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3>Come as you are</h3>
+          <p>You'll see plenty of Sunday best in our pews, and you'll see jeans and sneakers too. Wear what makes you comfortable. We're more interested in who's there than what's on.</p>
+        </div>
+
+        <div class="expect-card">
+          <div class="expect-ico">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3>Kids are welcome</h3>
+          <p>Our Children and Youth Ministry has programming during Sunday School at 9:00 AM, and kids are welcome to stay with their family during Worship at 10:30 AM. Ushers can point you to where they need to be.</p>
+        </div>
+
+        <div class="expect-card">
+          <div class="expect-ico">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Parking and accessibility</h3>
+          <p>Free parking is available in our lot off West 1st Street. Our sanctuary is ground-level with accessible seating. If you need assistance, our ushers are ready to help.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="schedule-block">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">Service Schedule</span>
+        <h2 class="section-title">When we gather.</h2>
+        <p class="section-lead">Sunday worship, mid-week prayer, choir rehearsal, and Bible study. Visitors welcome at every service.</p>
+      </div>
+      <div class="schedule-grid">
+
+        <div class="schedule-card">
+          <div class="num">9<span class="ampm">AM</span></div>
+          <div>
+            <div class="name">Sunday School</div>
+            <div class="day">Every Sunday</div>
+          </div>
+        </div>
+
+        <div class="schedule-card">
+          <div class="num">10:30<span class="ampm">AM</span></div>
+          <div>
+            <div class="name">Worship Service</div>
+            <div class="day">Every Sunday</div>
+          </div>
+        </div>
+
+        <div class="schedule-card">
+          <div class="num">7<span class="ampm">PM</span></div>
+          <div>
+            <div class="name">Choir Rehearsal</div>
+            <div class="day">Tuesdays</div>
+          </div>
+        </div>
+
+        <div class="schedule-card">
+          <div class="num">12<span class="ampm">PM</span></div>
+          <div>
+            <div class="name">Noon Prayer</div>
+            <div class="day">Wednesdays</div>
+          </div>
+        </div>
+
+        <div class="schedule-card" style="grid-column: 1 / -1;">
+          <div class="num">7<span class="ampm">PM</span></div>
+          <div>
+            <div class="name">Bible Study</div>
+            <div class="day">Wednesdays · A deeper dive into the Word for all ages</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP + CONTACT FORM -->
+  <section class="map-block">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">Find Us</span>
+        <h2 class="section-title">77 West 1st Street, Tracy, California.</h2>
+        <p class="section-lead">We've worshipped at this address since 1948. Come find us this Sunday or send a note ahead.</p>
+      </div>
+
+      <div class="map-grid" style="margin-top: 50px;">
+        <a href="https://maps.google.com/?q=77+West+1st+Street+Tracy+CA+95376" target="_blank" class="map-embed" style="text-decoration: none; color: inherit;">
+          <div class="map-fallback">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div style="font-family: 'Fraunces', serif; font-size: 24px; color: var(--ink); margin-bottom: 6px; font-weight: 600;">77 West 1st Street</div>
+            <div style="font-size: 14.5px; color: var(--muted); margin-bottom: 18px;">Tracy, California 95376</div>
+            <span class="btn-ghost" style="color: var(--oxblood);">Open in Google Maps</span>
+          </div>
+        </a>
+
+        <form class="contact-form" name="contact" onsubmit="return false;">
+          <h3>Drop us a line</h3>
+          <p class="sub">First time visiting, looking for a ministry to join, or just want to say hello? Tell us a little and we'll be in touch.</p>
+          <div class="form-row">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-row">
+            <label for="reason">I'm reaching out about</label>
+            <select id="reason" name="reason">
+              <option>Planning a first visit</option>
+              <option>Joining a ministry</option>
+              <option>Prayer request</option>
+              <option>Pastoral care</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+        </form>
+      </div>
+
+      <div class="quick-connect">
+        <a href="mailto:contact@goodnewsmbc.org" class="qc-card" style="text-decoration: none; color: inherit;">
+          <div class="qc-ico">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="qc-label">Email</div>
+            <div class="qc-value">contact@goodnewsmbc.org</div>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/GNMBCTracy77/" target="_blank" class="qc-card" style="text-decoration: none; color: inherit;">
+          <div class="qc-ico">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+          </div>
+          <div>
+            <div class="qc-label">Facebook</div>
+            <div class="qc-value">/GNMBCTracy77</div>
+          </div>
+        </a>
+
+        <a href="https://maps.google.com/?q=77+West+1st+Street+Tracy+CA+95376" target="_blank" class="qc-card" style="text-decoration: none; color: inherit;">
+          <div class="qc-ico">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <div>
+            <div class="qc-label">Directions</div>
+            <div class="qc-value">Open in Maps</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <img class="brand-mark" src="images/logo.png" alt="Good News MBC" style="height: 64px;" />
+          <p>Good News Missionary Baptist Church has served the Tracy, California community with faith, fellowship, and the gospel of Jesus Christ since 1947.</p>
+          <div class="ft-social">
+            <a href="https://www.facebook.com/GNMBCTracy77/" target="_blank" aria-label="Facebook">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="ft-col">
+          <h4>About</h4>
+          <a href="about.html">Our Story</a>
+          <a href="about.html#pastor">Our Pastor</a>
+          <a href="ministries.html">Ministries</a>
+        </div>
+        <div class="ft-col">
+          <h4>Connect</h4>
+          <a href="events.html">Events</a>
+          <a href="visit.html">Visit</a>
+          <a href="give.html">Give</a>
+        </div>
+        <div class="ft-col">
+          <h4>Find Us</h4>
+          <a href="https://maps.google.com/?q=77+West+1st+Street+Tracy+CA+95376" target="_blank">77 West 1st Street<br/>Tracy, CA 95376</a>
+          <a href="mailto:contact@goodnewsmbc.org" style="margin-top: 8px;">contact@goodnewsmbc.org</a>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <div>© 2026 Good News Missionary Baptist Church. All rights reserved.</div>
+        <div class="verse">"He must increase, and I must decrease."</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

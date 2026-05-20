@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Good News Missionary Baptist Church</title>
+  <meta name="description" content="The history of Good News Missionary Baptist Church and the story of Pastor Tyrone L. Morrison II. Faithful witness in Tracy, California since 1947." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .anchor-nav {
+      background: var(--cream-2);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+      position: sticky; top: 80px; z-index: 50;
+    }
+    .anchor-inner {
+      display: flex; gap: 32px; align-items: center; justify-content: center;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    }
+    .anchor-inner a { color: var(--muted); padding: 6px 0; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .anchor-inner a:hover, .anchor-inner a.active { color: var(--oxblood); border-bottom-color: var(--oxblood); }
+
+    /* Pastor block */
+    .pastor-block { padding: 110px 0; }
+    .pastor-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start; }
+    .pastor-portrait {
+      position: relative;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .pastor-portrait img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .pastor-meta {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 24px 28px;
+      margin-top: -50px; position: relative; z-index: 2;
+    }
+    .pastor-meta-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; font-size: 13.5px;
+      border-bottom: 1px solid var(--line);
+    }
+    .pastor-meta-row:last-child { border-bottom: none; }
+    .pastor-meta-row .k { color: var(--muted); text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.14em; font-weight: 600; }
+    .pastor-meta-row .v { color: var(--ink); font-weight: 500; text-align: right; }
+
+    /* Timeline */
+    .history-block { background: var(--cream-2); padding: 110px 0; }
+    .timeline {
+      position: relative; max-width: 880px; margin: 60px auto 0;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: ""; position: absolute; left: 9px; top: 12px; bottom: 12px;
+      width: 2px; background: var(--gold);
+    }
+    .tl-item { position: relative; padding-bottom: 44px; padding-left: 30px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ""; position: absolute; left: -29px; top: 8px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--oxblood); border: 3px solid var(--cream);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+    .tl-year {
+      font-family: 'Fraunces', serif; font-size: 26px; font-weight: 600;
+      color: var(--oxblood); line-height: 1; margin-bottom: 6px;
+    }
+    .tl-title {
+      font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .tl-body { font-size: 15px; color: var(--ink-soft); line-height: 1.7; max-width: 620px; }
+    .pastor-lineage {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 36px 40px; margin-top: 60px;
+    }
+    .pastor-lineage h3 {
+      font-family: 'Fraunces', serif; font-size: 22px; color: var(--ink); margin-bottom: 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--line);
+    }
+    .lineage-list { display: grid; gap: 14px; }
+    .lineage-row {
+      display: grid; grid-template-columns: 130px 1fr 90px; gap: 16px;
+      align-items: baseline; font-size: 14.5px;
+      padding: 8px 0; border-bottom: 1px solid var(--line);
+    }
+    .lineage-row:last-child { border-bottom: none; }
+    .lineage-row .years { font-family: 'Fraunces', serif; font-weight: 600; color: var(--oxblood); }
+    .lineage-row .name { color: var(--ink); font-weight: 500; }
+    .lineage-row .tenure { color: var(--muted); font-size: 12px; text-align: right; }
+    @media (max-width: 920px) {
+      .pastor-grid { grid-template-columns: 1fr; gap: 30px; }
+      .pastor-meta { margin-top: 24px; }
+      .anchor-inner { gap: 16px; font-size: 11px; }
+      .lineage-row { grid-template-columns: 1fr; gap: 4px; }
+      .lineage-row .tenure { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img class="brand-mark" src="images/logo.png" alt="Good News MBC" />
+        <div class="brand-stack">
+          <span class="brand-name">Good News</span>
+          <span class="brand-tag">Missionary Baptist Church · Tracy, CA</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="about.html" class="active">About</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html">Visit</a>
+        <a href="give.html">Give</a>
+        <a href="visit.html" class="btn btn-primary">Plan a Visit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container">
+      <span class="hero-eyebrow">Our Story</span>
+      <h1 class="display">A faithful witness, since 1947.</h1>
+      <p>Recognized as the oldest African-American church in the city of Tracy, Good News carries nearly eight decades of ministry, leadership, and the gospel of Jesus Christ.</p>
+    </div>
+  </header>
+
+  <!-- ANCHOR NAV -->
+  <div class="anchor-nav">
+    <div class="container anchor-inner">
+      <a href="#pastor">Our Pastor</a>
+      <a href="#history">Our History</a>
+      <a href="#lineage">Pastoral Lineage</a>
+    </div>
+  </div>
+
+  <!-- PASTOR -->
+  <section class="pastor-block" id="pastor">
+    <div class="container">
+      <div class="pastor-grid">
+        <div>
+          <div class="pastor-portrait">
+            <img src="images/pastor-wife.png" alt="Pastor Tyrone L. Morrison II and First Lady Doretha Morrison" />
+          </div>
+          <div class="pastor-meta">
+            <div class="pastor-meta-row">
+              <span class="k">Installed</span>
+              <span class="v">March 2018</span>
+            </div>
+            <div class="pastor-meta-row">
+              <span class="k">Hometown</span>
+              <span class="v">Los Angeles, California</span>
+            </div>
+            <div class="pastor-meta-row">
+              <span class="k">Education</span>
+              <span class="v">UC Berkeley · Piedmont Seminary · GNTS</span>
+            </div>
+            <div class="pastor-meta-row">
+              <span class="k">Family</span>
+              <span class="v">First Lady Doretha · 3 sons</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Our Pastor</span>
+          <h2 class="section-title">Pastor Tyrone L. Morrison II</h2>
+          <p class="pull-quote">
+            "But my life is worth nothing unless I use it for doing the work assigned me by the Lord Jesus, the work of telling others the Good News about God's wonderful kindness and love."
+            <span class="pull-quote-attr">Acts 20:24 (NLT)</span>
+          </p>
+          <div class="prose">
+            <p>Pastor Tyrone L. Morrison II was born and raised in Los Angeles, California. He accepted Jesus Christ into his life and was baptized at Greater Faith Baptist Church at the age of eight by the late Pastor Joseph Tillman, Sr. He has served the Christian community most of his life.</p>
+            <p>Pastor Morrison received his formal education from the Los Angeles School Districts. He continued his secondary education at U.C. Berkeley, Piedmont Theological Seminary, and the Good News Theological Seminary.</p>
+            <p>In 1993, Pastor Morrison was ordained as a Deacon at the Mount Calvary Missionary Baptist Church in Oakland, California, under the leadership of Pastor Dennis Meredith, and served in that capacity for ten years. But God had a greater calling on his life. In April 2003, Pastor Morrison accepted his calling to preach the gospel and was licensed at Victory Baptist Church in Oakland under the leadership of Pastor Jewel Peters. In 2005, he was ordained at the Stars of Joy Missionary Baptist Church by Pastor Elijah Baker, and served faithfully as an Associate Minister.</p>
+            <p>In 2011, Pastor Morrison moved to Tracy, California, and united with the Good News Missionary Baptist Church under the leadership of Pastor B. Carl Edwards, where he served faithfully as an associate pastor and minister.</p>
+            <p>On March 3, 2018, after much prayer and consideration, Rev. Morrison accepted the call to be the Senior Pastor of the Good News Missionary Baptist Church and was installed as the new Pastor that same month.</p>
+            <p>Pastor Morrison has been employed by the University of California for more than thirty years. He is blessed to be married to Doretha Morrison for twenty-six years, and to father three sons: Jerome, Tyrone III, and Dorian.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history-block" id="history">
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <span class="eyebrow" style="padding-left: 0;">Heritage</span>
+        <h2 class="section-title">The History of Good News.</h2>
+        <p class="section-lead" style="margin: 0 auto;">From a Sunday afternoon in a living room on West 3rd Street, to the oldest African-American church in the city of Tracy. Here is how the Lord has carried us.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-year">1947</div>
+          <div class="tl-title">Where it started</div>
+          <p class="tl-body">The late Reverend Ealis Sallie came to Tracy with a conviction in his heart to organize a Missionary Baptist Church. On Sunday, December 7, 1947, Rev. Sallie held the first service in the home of Horace and Mamie Anderson at 111 West 3rd Street with five people in attendance.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">1947</div>
+          <div class="tl-title">A name and a calling</div>
+          <p class="tl-body">On December 14, 1947, the members agreed to the name "Rock West Missionary Baptist Church." A few weeks later, Reverend Ealis Sallie was elected as the church's first pastor. Sis. Mamie Anderson was asked to serve as Secretary and Treasurer.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">1948</div>
+          <div class="tl-title">A new home on West First Street</div>
+          <p class="tl-body">After approximately one year of services in the Anderson home, land was purchased at 77 West First Street, the address Good News still calls home today. Construction soon began on the church building.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">1979</div>
+          <div class="tl-title">Rev. Sallie called home</div>
+          <p class="tl-body">On March 15, 1979, Rev. Ealis Sallie was called home. He had served as the only pastor of Rock West Missionary Baptist Church for thirty-one years. Reverend Michael Bethea was ordained and accepted the call as pastor on June 27, 1979, and served for two years.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">1982</div>
+          <div class="tl-title">Becoming Good News</div>
+          <p class="tl-body">Reverend David L. Jemison accepted the call to pastor on January 3, 1982. He told the congregation that the Holy Spirit had given him a plan to lead, which included changing the name of the church to "Good News Missionary Baptist Church." The name was officially changed on January 6, 1982.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">1985</div>
+          <div class="tl-title">Pastor B. Carl Edwards</div>
+          <p class="tl-body">On February 13, 1985, Good News Missionary Baptist Church called Reverend B. Carl Edwards as pastor, and he accepted the call that same evening. He would serve faithfully for thirty-two years.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2003</div>
+          <div class="tl-title">A recognized place in Tracy's history</div>
+          <p class="tl-body">In June 2003, the church chronicles were placed in the Tracy Historical Museum in an official ceremony. Good News MBC was recognized as the oldest African-American church in the city of Tracy.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2011</div>
+          <div class="tl-title">Good News Bible Seminary</div>
+          <p class="tl-body">The Good News Bible Seminary held its first class in August 2011 under Pastor Edwards' leadership. The seminary has since received its accreditation, continuing the church's commitment to teaching the Word.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2013</div>
+          <div class="tl-title">Free and clear</div>
+          <p class="tl-body">After years of faithful giving from the congregation, the church mortgage balance was paid in full in 2013, a milestone of God's provision for the Good News family.</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2018</div>
+          <div class="tl-title">A new chapter</div>
+          <p class="tl-body">In September of 2017, after thirty-two years of faithful service, Rev. Dr. B. Carl Edwards retired. On March 3, 2018, after much prayer and consideration, Rev. Tyrone L. Morrison II was called to be the pastor of Good News Missionary Baptist Church, and his ministry continues today.</p>
+        </div>
+
+      </div>
+
+      <div class="pastor-lineage" id="lineage">
+        <h3>Pastoral Lineage</h3>
+        <div class="lineage-list">
+          <div class="lineage-row">
+            <span class="years">1947 to 1979</span>
+            <span class="name">Rev. Ealis Sallie</span>
+            <span class="tenure">31 years</span>
+          </div>
+          <div class="lineage-row">
+            <span class="years">1979 to 1981</span>
+            <span class="name">Rev. Michael Bethea</span>
+            <span class="tenure">2 years</span>
+          </div>
+          <div class="lineage-row">
+            <span class="years">1982 to 1984</span>
+            <span class="name">Rev. David L. Jemison</span>
+            <span class="tenure">2 years</span>
+          </div>
+          <div class="lineage-row">
+            <span class="years">1985 to 2017</span>
+            <span class="name">Rev. Dr. B. Carl Edwards</span>
+            <span class="tenure">32 years</span>
+          </div>
+          <div class="lineage-row">
+            <span class="years">2018 to Present</span>
+            <span class="name">Pastor Tyrone L. Morrison II</span>
+            <span class="tenure">Current</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VISIT CTA -->
+  <section class="cta-stripe center">
+    <div class="container">
+      <span class="eyebrow">Come Worship With Us</span>
+      <h2 class="section-title">Be part of the next chapter.</h2>
+      <p>The story of Good News is still being written. There is a seat for you this Sunday at 9:00 AM Sunday School or 10:30 AM Worship.</p>
+      <a href="visit.html" class="btn btn-primary">Plan Your Visit</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <img class="brand-mark" src="images/logo.png" alt="Good News MBC" style="height: 64px;" />
+          <p>Good News Missionary Baptist Church has served the Tracy, California community with faith, fellowship, and the gospel of Jesus Christ since 1947.</p>
+          <div class="ft-social">
+            <a href="https://www.facebook.com/GNMBCTracy77/" target="_blank" aria-label="Facebook">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="ft-col">
+          <h4>About</h4>
+          <a href="about.html">Our Story</a>
+          <a href="about.html#pastor">Our Pastor</a>
+          <a href="ministries.html">Ministries</a>
+        </div>
+        <div class="ft-col">
+          <h4>Connect</h4>
+          <a href="events.html">Events</a>
+          <a href="visit.html">Visit</a>
+          <a href="give.html">Give</a>
+        </div>
+        <div class="ft-col">
+          <h4>Find Us</h4>
+          <a href="https://maps.google.com/?q=77+West+1st+Street+Tracy+CA+95376" target="_blank">77 West 1st Street<br/>Tracy, CA 95376</a>
+          <a href="mailto:contact@goodnewsmbc.org" style="margin-top: 8px;">contact@goodnewsmbc.org</a>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <div>© 2026 Good News Missionary Baptist Church. All rights reserved.</div>
+        <div class="verse">"He must increase, and I must decrease."</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Give | Good News Missionary Baptist Church</title>
+  <meta name="description" content="Support the ministry of Good News Missionary Baptist Church through online giving, mobile payment apps, or in person. Every gift counts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Online giving primary card */
+    .primary-give {
+      background: linear-gradient(135deg, var(--oxblood) 0%, var(--oxblood-deep) 100%);
+      color: var(--cream);
+      border-radius: var(--radius);
+      padding: 60px 50px;
+      position: relative; overflow: hidden;
+      margin-top: 60px;
+    }
+    .primary-give::before {
+      content: ""; position: absolute; right: -120px; top: -120px;
+      width: 440px; height: 440px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,97,0.20) 0%, transparent 70%);
+    }
+    .primary-give-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 50px;
+      align-items: center;
+    }
+    .primary-give .eyebrow { color: var(--gold-soft); padding-left: 44px; }
+    .primary-give .eyebrow::before { background: var(--gold-soft); }
+    .primary-give h2 { color: var(--cream); margin-bottom: 16px; font-size: 38px; }
+    .primary-give p { font-size: 16px; opacity: 0.92; margin-bottom: 26px; max-width: 540px; }
+    .primary-give .btn-primary { background: var(--cream); color: var(--oxblood); border-color: var(--cream); padding: 16px 32px; font-size: 14px; }
+    .primary-give .btn-primary:hover { background: var(--gold-soft); border-color: var(--gold-soft); color: var(--ink); }
+    .realm-mock {
+      background: rgba(250,246,238,0.08);
+      border: 1px solid rgba(250,246,238,0.18);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .realm-mock .platform {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-soft); font-weight: 600; margin-bottom: 14px;
+    }
+    .realm-mock .name {
+      font-family: 'Fraunces', serif; font-size: 22px; color: var(--cream);
+      margin-bottom: 10px; font-weight: 600;
+    }
+    .realm-mock .url {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      color: rgba(250,246,238,0.8); word-break: break-all;
+      padding: 8px 12px; background: rgba(0,0,0,0.25);
+      border-radius: 3px;
+    }
+    .realm-features { margin-top: 18px; font-size: 13px; }
+    .realm-features li {
+      list-style: none; padding: 6px 0; color: rgba(250,246,238,0.88);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .realm-features li::before {
+      content: ""; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold-soft); flex-shrink: 0;
+    }
+
+    /* QR section */
+    .qr-section { padding: 110px 0; background: var(--cream-2); }
+    .qr-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+      margin-top: 50px;
+    }
+    .qr-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 34px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .qr-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .qr-card .platform-name {
+      font-family: 'Fraunces', serif; font-size: 22px; color: var(--ink);
+      font-weight: 600; margin-bottom: 6px;
+    }
+    .qr-card .handle {
+      font-size: 13px; color: var(--muted); margin-bottom: 22px;
+      letter-spacing: 0.04em;
+    }
+    .qr-placeholder {
+      width: 180px; height: 180px;
+      background: var(--cream);
+      border: 2px dashed var(--line-strong);
+      border-radius: var(--radius);
+      margin: 0 auto 22px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--muted-soft);
+      position: relative;
+    }
+    .qr-placeholder svg { width: 36px; margin-bottom: 6px; }
+    .qr-placeholder .qr-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+    .qr-platform-ico {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+      font-weight: 700; font-size: 18px;
+    }
+    .ico-cashapp { background: #00D632; color: white; }
+    .ico-venmo { background: #3D95CE; color: white; }
+    .ico-paypal { background: #003087; color: #FFC439; }
+
+    /* How to give steps */
+    .steps-block { padding: 110px 0; }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+      margin-top: 60px;
+    }
+    .step-card { position: relative; padding: 36px 30px 30px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+    .step-num {
+      position: absolute; top: -22px; left: 28px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--oxblood); color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600;
+    }
+    .step-card h3 {
+      font-family: 'Fraunces', serif; font-size: 19px; color: var(--ink);
+      margin-bottom: 10px; font-weight: 600;
+    }
+    .step-card p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; }
+
+    /* Mail giving */
+    .mail-block {
+      background: var(--navy); color: var(--cream);
+      padding: 100px 0;
+    }
+    .mail-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+    .mail-block .eyebrow { color: var(--gold-soft); padding-left: 44px; }
+    .mail-block .eyebrow::before { background: var(--gold-soft); }
+    .mail-block .section-title { color: var(--cream); }
+    .mail-block p { color: rgba(250,246,238,0.82); font-size: 16px; line-height: 1.7; }
+    .mail-card {
+      background: rgba(250,246,238,0.06);
+      border: 1px solid rgba(250,246,238,0.14);
+      border-radius: var(--radius);
+      padding: 34px;
+    }
+    .mail-card .label {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-soft); font-weight: 600; margin-bottom: 14px;
+    }
+    .mail-card .address {
+      font-family: 'Fraunces', serif; font-size: 22px; color: var(--cream);
+      font-weight: 600; line-height: 1.45;
+    }
+    .mail-card .made-out {
+      margin-top: 22px; padding-top: 22px;
+      border-top: 1px solid rgba(250,246,238,0.14);
+      font-size: 13.5px; color: rgba(250,246,238,0.85);
+    }
+
+    /* Verse banner */
+    .verse-banner {
+      background: var(--cream); padding: 80px 0; text-align: center;
+    }
+    .verse-banner blockquote {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 30px); color: var(--ink);
+      line-height: 1.45; max-width: 800px; margin: 0 auto;
+    }
+    .verse-banner cite {
+      display: block; margin-top: 22px;
+      font-family: 'Inter', sans-serif; font-style: normal;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--oxblood); font-weight: 600;
+    }
+
+    /* Internal note (for Mike, removed in production) */
+    .mike-note {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1px solid #F59E0B;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 50px 0;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .mike-note-ico {
+      width: 44px; height: 44px; border-radius: var(--radius);
+      background: rgba(180, 83, 9, 0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .mike-note-ico svg { width: 22px; color: #B45309; }
+    .mike-note h4 { font-family: 'Fraunces', serif; font-size: 17px; color: #78350F; margin-bottom: 4px; }
+    .mike-note p { font-size: 13.5px; color: #78350F; line-height: 1.6; }
+
+    @media (max-width: 920px) {
+      .primary-give-inner { grid-template-columns: 1fr; gap: 30px; }
+      .qr-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .mail-grid { grid-template-columns: 1fr; gap: 40px; }
+      .primary-give { padding: 40px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img class="brand-mark" src="images/logo.png" alt="Good News MBC" />
+        <div class="brand-stack">
+          <span class="brand-name">Good News</span>
+          <span class="brand-tag">Missionary Baptist Church · Tracy, CA</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html">Visit</a>
+        <a href="give.html" class="active">Give</a>
+        <a href="visit.html" class="btn btn-primary">Plan a Visit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container">
+      <span class="hero-eyebrow">Every Gift Counts</span>
+      <h1 class="display">Give to the work of the Lord.</h1>
+      <p>Your generosity allows Good News to do more, to serve the community, support the ministries of the church, and proclaim the gospel of hope in Tracy and beyond.</p>
+    </div>
+  </header>
+
+  <!-- PRIMARY: GIVE ONLINE -->
+  <section class="container">
+    <div class="primary-give">
+      <div class="primary-give-inner">
+        <div>
+          <span class="eyebrow">Online Giving</span>
+          <h2 class="section-title">The fastest way to give.</h2>
+          <p>Give securely online through our church management platform. You can give one time, set up recurring gifts, or designate to a specific fund like tithes, missions, or building.</p>
+          <a href="https://onrealm.org/GoodNews/-/form/give/now" target="_blank" class="btn btn-primary">Give Online Now</a>
+        </div>
+        <div class="realm-mock">
+          <div class="platform">Powered by Realm</div>
+          <div class="name">onrealm.org/GoodNews</div>
+          <div class="url">onrealm.org/GoodNews/-/form/give/now</div>
+          <ul class="realm-features">
+            <li>One-time or recurring gifts</li>
+            <li>Designate to a specific fund</li>
+            <li>Secure card or bank transfer</li>
+            <li>Email receipt for tax records</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER WAYS: QR CODES -->
+  <section class="qr-section">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">Other Ways to Give</span>
+        <h2 class="section-title">Use the payment app you already trust.</h2>
+        <p class="section-lead">Scan a QR code with your phone to give through Cash App, Venmo, or PayPal. Same generosity, your preferred platform.</p>
+      </div>
+
+      <div class="qr-grid">
+
+        <div class="qr-card">
+          <div class="qr-platform-ico ico-cashapp">$</div>
+          <div class="platform-name">Cash App</div>
+          <div class="handle">$GoodNewsMBC</div>
+          <div class="qr-placeholder">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
+            <div class="qr-label">QR Code Here</div>
+          </div>
+          <div style="font-size: 13px; color: var(--muted);">Scan with your camera app</div>
+        </div>
+
+        <div class="qr-card">
+          <div class="qr-platform-ico ico-venmo">V</div>
+          <div class="platform-name">Venmo</div>
+          <div class="handle">@GoodNewsMBC</div>
+          <div class="qr-placeholder">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
+            <div class="qr-label">QR Code Here</div>
+          </div>
+          <div style="font-size: 13px; color: var(--muted);">Scan with the Venmo app</div>
+        </div>
+
+        <div class="qr-card">
+          <div class="qr-platform-ico ico-paypal">P</div>
+          <div class="platform-name">PayPal</div>
+          <div class="handle">paypal.me/GoodNewsMBC</div>
+          <div class="qr-placeholder">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
+            <div class="qr-label">QR Code Here</div>
+          </div>
+          <div style="font-size: 13px; color: var(--muted);">Scan with your camera app</div>
+        </div>
+
+      </div>
+
+      <!-- Internal note for Mike -->
+      <div class="mike-note">
+        <div class="mike-note-ico">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4>For Mike: QR codes need to be dropped in</h4>
+          <p>The three QR codes on the current live site (Give page) show as broken/placeholder images so I could not extract them. Platform handles above (Cash App, Venmo, PayPal) are placeholders pending confirmation from the church. Confirm with Pastor Morrison which platforms they use and what the handles are, and we'll swap the QR code images and update the handles. This banner removes in production.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW TO GIVE STEPS -->
+  <section class="steps-block">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">How to Give Using the QR Codes</span>
+        <h2 class="section-title">Three steps, takes about a minute.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Scan the code</h3>
+          <p>Open the QR code for the payment system you use. You can use your phone's camera or the app's built-in scanner.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Follow the prompts</h3>
+          <p>Your phone will redirect you to the service. Enter the amount you want to give and confirm the transaction.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>You're done</h3>
+          <p>You'll receive an email confirmation of your donation for your personal records. Thank you for partnering with the ministry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIVE BY MAIL -->
+  <section class="mail-block">
+    <div class="container">
+      <div class="mail-grid">
+        <div>
+          <span class="eyebrow">Give by Mail</span>
+          <h2 class="section-title">Prefer to send a check?</h2>
+          <p>If you'd rather give by mail, you can send a check to the church directly. Many of our long-time members give this way, and we welcome it.</p>
+          <p style="margin-top: 18px;">Please make checks payable to <strong style="color: var(--cream);">Good News Missionary Baptist Church</strong>. Indicate "tithe," "offering," or a specific fund in the memo line if you'd like.</p>
+        </div>
+        <div class="mail-card">
+          <div class="label">Mail to</div>
+          <div class="address">Good News Missionary Baptist Church<br/>77 West 1st Street<br/>Tracy, California 95376</div>
+          <div class="made-out">Checks payable to: Good News Missionary Baptist Church</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSE BANNER -->
+  <section class="verse-banner">
+    <div class="container">
+      <blockquote>
+        "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+        <cite>2 Corinthians 9:7</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <img class="brand-mark" src="images/logo.png" alt="Good News MBC" style="height: 64px;" />
+          <p>Good News Missionary Baptist Church has served the Tracy, California community with faith, fellowship, and the gospel of Jesus Christ since 1947.</p>
+          <div class="ft-social">
+            <a href="https://www.facebook.com/GNMBCTracy77/" target="_blank" aria-label="Facebook">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="ft-col">
+          <h4>About</h4>
+          <a href="about.html">Our Story</a>
+          <a href="about.html#pastor">Our Pastor</a>
+          <a href="ministries.html">Ministries</a>
+        </div>
+        <div class="ft-col">
+          <h4>Connect</h4>
+          <a href="events.html">Events</a>
+          <a href="visit.html">Visit</a>
+          <a href="give.html">Give</a>
+        </div>
+        <div class="ft-col">
+          <h4>Find Us</h4>
+          <a href="https://maps.google.com/?q=77+West+1st+Street+Tracy+CA+95376" target="_blank">77 West 1st Street<br/>Tracy, CA 95376</a>
+          <a href="mailto:contact@goodnewsmbc.org" style="margin-top: 8px;">contact@goodnewsmbc.org</a>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <div>© 2026 Good News Missionary Baptist Church. All rights reserved.</div>
+        <div class="verse">"He must increase, and I must decrease."</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
