@@ -143,9 +143,29 @@
     .subscribe h2 { font-family: 'Fraunces', serif; font-size: 34px; color: var(--ink); margin-bottom: 14px; }
     .subscribe p { color: var(--muted); max-width: 560px; margin: 0 auto 28px; font-size: 16px; }
 
+    /* Past events flyer wall */
+    .past-section { background: var(--cream-2); padding: 80px 0; }
+    .past-section h2 {
+      font-family: 'Fraunces', serif; font-size: 30px; color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .past-lead { color: var(--muted); font-size: 15px; margin-bottom: 36px; max-width: 640px; }
+    .flyer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; }
+    .flyer-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); overflow: hidden; margin: 0;
+      display: flex; flex-direction: column; transition: all 0.2s;
+    }
+    .flyer-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .flyer-card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+    .flyer-card figcaption { padding: 24px; }
+    .flyer-card h3 { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); line-height: 1.3; margin: 4px 0 6px; }
+    .flyer-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-top: 12px; }
+
     @media (max-width: 920px) {
       .featured-card { grid-template-columns: 1fr; }
       .events-list { grid-template-columns: 1fr; }
+      .flyer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -293,7 +313,7 @@
             <div>
               <div class="ev-cat">Worship</div>
               <h3>Family &amp; Friends Day</h3>
-              <div class="event-meta">Sunday · 10:30 AM · Sanctuary</div>
+              <div class="event-meta">Sunday · 10:00 AM · Sanctuary</div>
             </div>
           </div>
           <p class="event-desc">Our annual Family and Friends Day, with worship, special music, and a fellowship meal afterward. Bring someone new with you.</p>
@@ -309,7 +329,7 @@
             <div>
               <div class="ev-cat">Youth</div>
               <h3>Youth Sunday</h3>
-              <div class="event-meta">Sunday · 10:30 AM · Sanctuary</div>
+              <div class="event-meta">Sunday · 10:00 AM · Sanctuary</div>
             </div>
           </div>
           <p class="event-desc">Our children and youth lead the morning service through music, scripture reading, and ministry. A celebration of the next generation.</p>
@@ -327,11 +347,42 @@
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <div>
-          <h4>How event publishing will work (for Mike's eyes only, removed in production)</h4>
-          <p>Every event card above will be rendered from a single Google Sheet named <code>GNMBC Events</code>. The church admin opens the sheet, adds a row with the event details, hits Enter. Within seconds, the event appears here on the website. No login to a custom CMS, no rebuilds, no code commits. The sheet is the database, and Google Sheets is a tool they already know how to use.</p>
+          <h4>Publishing plan (for Mike's eyes only, removed in production)</h4>
+          <p>Direction as of Jul 1, 2026: the church posts event flyers to Facebook. Pipeline extracts date/time/place from each flyer and renders cards here. Dated flyers become upcoming events, then move to the flyer wall below after they pass. The six cards above are still SAMPLE data. Flyer images live in <code>images/flyers/</code>.</p>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- RECENT EVENTS: flyer wall -->
+  <section class="past-section">
+    <div class="container">
+      <h2>Recently at Good News</h2>
+      <p class="past-lead">A look back at what the Lord has been doing in our house. These flyers come straight from our church family's Facebook page.</p>
+      <div class="flyer-grid">
+
+        <figure class="flyer-card">
+          <img src="images/flyers/womens-sunday-2026-05-31.jpg" alt="Women's Sunday flyer with guest speakers Mother Haskins, Onawu Pickett, and Valerie Ford" loading="lazy" />
+          <figcaption>
+            <div class="ev-cat">Women's Ministry · Worship</div>
+            <h3>Women's Sunday</h3>
+            <div class="event-meta">Sunday, May 31 · 10:00 AM · Sanctuary</div>
+            <p>"For we walk by faith and not by sight" (2 Corinthians 5:7). Guest speakers Mother Haskins, Onawu Pickett, and Valerie Ford brought the Word as our women led worship.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="flyer-card">
+          <img src="images/flyers/pastor-appreciation-2026-05-17.jpg" alt="Pastor and Wife 8th Appreciation Service flyer" loading="lazy" />
+          <figcaption>
+            <div class="ev-cat">Special Service</div>
+            <h3>Pastor &amp; Wife 8th Appreciation Service</h3>
+            <div class="event-meta">Sunday, May 17 · 3:00 PM · Sanctuary</div>
+            <p>"A Pastor whose steps are ordered by the Lord" (Psalm 37:23). Eight years of Pastor Tyrone Morrison II and First Lady Doretha Morrison, with guest speaker Rev. Dr. Roger Tyler of Progressive M.B.C.</p>
+          </figcaption>
+        </figure>
+
+      </div>
     </div>
   </section>
 
