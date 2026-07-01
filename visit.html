@@ -142,6 +142,9 @@
         <a href="give.html">Give</a>
         <a href="visit.html" class="btn btn-primary">Plan a Visit</a>
       </div>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="var l=this.closest('.nav').querySelector('.nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'));">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -265,7 +268,7 @@
           </div>
         </a>
 
-        <form class="contact-form" name="contact" onsubmit="return false;">
+        <form class="contact-form" name="contact" onsubmit="event.preventDefault();var f=this;location.href='mailto:contact@goodnewsmbc.org?subject='+encodeURIComponent('[Website] '+f.reason.value+' from '+f.name.value)+'&body='+encodeURIComponent(f.message.value+'\n\nFrom: '+f.name.value+' ('+f.email.value+')');">
           <h3>Drop us a line</h3>
           <p class="sub">First time visiting, looking for a ministry to join, or just want to say hello? Tell us a little and we'll be in touch.</p>
           <div class="form-row">
@@ -291,6 +294,7 @@
             <textarea id="message" name="message"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center;">This opens your email app. Your message goes to contact@goodnewsmbc.org.</p>
         </form>
       </div>
 

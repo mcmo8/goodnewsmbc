@@ -436,6 +436,14 @@ footer {
    ========================================================================== */
 @media (max-width: 920px) {
   .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--white);
+    padding: 22px 28px; gap: 18px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+  }
   .menu-toggle { display: block; }
   .two-col, .two-col-flip { grid-template-columns: 1fr; gap: 50px; }
   .card-grid, .card-grid.two { grid-template-columns: 1fr; }
@@ -447,5 +455,7 @@ footer {
   .pillar .key { font-size: 17px; }
   .badge-stat { left: 0; bottom: -20px; padding: 16px 20px; }
   .badge-stat .num { font-size: 34px; }
-  .hero-inner { padding: 130px 0 140px; }
+  .hero { flex-direction: column; justify-content: center; }
+  .hero-inner { padding: 110px 0 60px; }
+  .hero-strip { position: relative; width: 100%; margin-top: auto; }
 }
