@@ -116,24 +116,6 @@
     .event-desc { font-size: 14.5px; color: var(--ink-soft); margin-top: 16px; flex: 1; line-height: 1.6; }
     .event-actions { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
 
-    .admin-banner {
-      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-      border: 1px solid #F59E0B;
-      border-radius: var(--radius);
-      padding: 28px;
-      margin: 50px 0;
-      display: flex; gap: 20px; align-items: flex-start;
-    }
-    .admin-banner-ico {
-      width: 48px; height: 48px; border-radius: var(--radius);
-      background: rgba(180, 83, 9, 0.15);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .admin-banner-ico svg { width: 24px; color: #B45309; }
-    .admin-banner h4 { font-family: 'Fraunces', serif; font-size: 18px; color: #78350F; margin-bottom: 6px; }
-    .admin-banner p { font-size: 14px; color: #78350F; line-height: 1.65; }
-    .admin-banner code { background: rgba(120, 53, 15, 0.15); padding: 2px 8px; border-radius: 3px; font-size: 13px; }
 
     .subscribe {
       background: var(--cream-2);
@@ -215,186 +197,27 @@
         <button class="pill" data-cat="mens">Men's</button>
         <button class="pill" data-cat="outreach">Outreach</button>
       </div>
-      <div class="data-pill" title="Events loaded live from the GNMBC Events spreadsheet">Live from Google Sheets</div>
     </div>
   </div>
 
-  <!-- FEATURED EVENT -->
-  <section class="container">
-    <div class="featured-card">
-      <div class="featured-img">
-        <span class="featured-label">Next Up</span>
-        <div>
-          <div class="featured-date">12</div>
-          <div class="featured-date-sub">Saturday, July 12, 2026</div>
-        </div>
-      </div>
-      <div class="featured-body">
-        <div class="featured-cat">Women's Ministry · Conference</div>
-        <h2>Annual Women's Conference</h2>
-        <div class="featured-meta">
-          <div class="featured-meta-item">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            9:00 AM
-          </div>
-          <div class="featured-meta-item">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            Fellowship Hall
-          </div>
-          <div class="featured-meta-item">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            All welcome
-          </div>
-        </div>
-        <p>A day of teaching, fellowship, and refreshment for the women of Good News and the wider Tracy community. Breakfast and lunch provided, and every woman is welcome, member or guest.</p>
-        <a href="#" class="btn btn-primary">Add to Calendar</a>
-      </div>
-    </div>
-  </section>
+  <!-- FEATURED EVENT (rendered by js/events.js from events-data.js) -->
+  <section class="container" id="featured-slot"></section>
 
   <!-- EVENTS LIST -->
   <section class="events-section">
     <div class="container">
-      <h2>This Summer at Good News</h2>
-      <div class="events-list">
-
-
-        <article class="event-item">
-          <div class="event-top">
-            <div class="ev-date-block"><div class="m">Jul</div><div class="d">19</div></div>
-            <div>
-              <div class="ev-cat">Youth · Outreach</div>
-              <h3>Youth Summer Service Day</h3>
-              <div class="event-meta">Saturday · 10:00 AM · Community Garden</div>
-            </div>
-          </div>
-          <p class="event-desc">Our young people serve the community alongside Tracy Community Garden volunteers. Open to ages 12 and up.</p>
-          <div class="event-actions">
-            <a href="#" class="btn-ghost">Details</a>
-            <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">Volunteers needed</span>
-          </div>
-        </article>
-
-        <article class="event-item">
-          <div class="event-top">
-            <div class="ev-date-block"><div class="m">Aug</div><div class="d">02</div></div>
-            <div>
-              <div class="ev-cat">Outreach</div>
-              <h3>Back-to-School Outreach</h3>
-              <div class="event-meta">Saturday · 10:00 AM · Church Parking Lot</div>
-            </div>
-          </div>
-          <p class="event-desc">Free backpacks, school supplies, and a hot meal for Tracy families. Volunteers welcome from 8:00 AM. All families served regardless of church affiliation.</p>
-          <div class="event-actions">
-            <a href="#" class="btn-ghost">Details</a>
-            <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">Sign up to volunteer</span>
-          </div>
-        </article>
-
-        <article class="event-item">
-          <div class="event-top">
-            <div class="ev-date-block"><div class="m">Aug</div><div class="d">17</div></div>
-            <div>
-              <div class="ev-cat">Men's Ministry</div>
-              <h3>Men's Breakfast &amp; Bible Study</h3>
-              <div class="event-meta">Sunday · 7:30 AM · Fellowship Hall</div>
-            </div>
-          </div>
-          <p class="event-desc">A morning of food, fellowship, and the Word for the brothers of Good News. Friends and family welcome. RSVP appreciated for breakfast headcount.</p>
-          <div class="event-actions">
-            <a href="#" class="btn-ghost">Details</a>
-            <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">RSVP appreciated</span>
-          </div>
-        </article>
-
-        <article class="event-item">
-          <div class="event-top">
-            <div class="ev-date-block"><div class="m">Aug</div><div class="d">24</div></div>
-            <div>
-              <div class="ev-cat">Worship</div>
-              <h3>Family &amp; Friends Day</h3>
-              <div class="event-meta">Sunday · 10:00 AM · Sanctuary</div>
-            </div>
-          </div>
-          <p class="event-desc">Our annual Family and Friends Day, with worship, special music, and a fellowship meal afterward. Bring someone new with you.</p>
-          <div class="event-actions">
-            <a href="#" class="btn-ghost">Details</a>
-            <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">Bring a friend</span>
-          </div>
-        </article>
-
-        <article class="event-item">
-          <div class="event-top">
-            <div class="ev-date-block"><div class="m">Sep</div><div class="d">07</div></div>
-            <div>
-              <div class="ev-cat">Youth</div>
-              <h3>Youth Sunday</h3>
-              <div class="event-meta">Sunday · 10:00 AM · Sanctuary</div>
-            </div>
-          </div>
-          <p class="event-desc">Our children and youth lead the morning service through music, scripture reading, and ministry. A celebration of the next generation.</p>
-          <div class="event-actions">
-            <a href="#" class="btn-ghost">Details</a>
-            <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">All ages welcome</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Admin banner: explains the Google Sheets model (remove in production) -->
-      <div class="admin-banner">
-        <div class="admin-banner-ico">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div>
-          <h4>Publishing plan (for Mike's eyes only, removed in production)</h4>
-          <p>Direction as of Jul 1, 2026: the church posts event flyers to Facebook. Pipeline extracts date/time/place from each flyer and renders cards here. Dated flyers become upcoming events, then move to the flyer wall below after they pass. The six cards above are still SAMPLE data. Flyer images live in <code>images/flyers/</code>.</p>
-        </div>
-      </div>
+      <h2>Coming up at Good News</h2>
+      <div class="events-list" id="events-list"></div>
 
     </div>
   </section>
 
   <!-- RECENT EVENTS: flyer wall -->
-  <section class="past-section">
+  <section class="past-section" id="past-section">
     <div class="container">
       <h2>Recently at Good News</h2>
       <p class="past-lead">A look back at what the Lord has been doing in our house. These flyers come straight from our church family's Facebook page.</p>
-      <div class="flyer-grid">
-
-        <figure class="flyer-card">
-          <img src="images/flyers/womens-sunday-2026-05-31.jpg" alt="Women's Sunday flyer with guest speakers Mother Haskins, Onawu Pickett, and Valerie Ford" loading="lazy" />
-          <figcaption>
-            <div class="ev-cat">Women's Ministry · Worship</div>
-            <h3>Women's Sunday</h3>
-            <div class="event-meta">Sunday, May 31 · 10:00 AM · Sanctuary</div>
-            <p>"For we walk by faith and not by sight" (2 Corinthians 5:7). Guest speakers Mother Haskins, Onawu Pickett, and Valerie Ford brought the Word as our women led worship.</p>
-          </figcaption>
-        </figure>
-
-        <figure class="flyer-card">
-          <img src="images/flyers/pastor-appreciation-2026-05-17.jpg" alt="Pastor and Wife 8th Appreciation Service flyer" loading="lazy" />
-          <figcaption>
-            <div class="ev-cat">Special Service</div>
-            <h3>Pastor &amp; Wife 8th Appreciation Service</h3>
-            <div class="event-meta">Sunday, May 17 · 3:00 PM · Sanctuary</div>
-            <p>"A Pastor whose steps are ordered by the Lord" (Psalm 37:23). Eight years of Pastor Tyrone Morrison II and First Lady Doretha Morrison, with guest speaker Rev. Dr. Roger Tyler of Progressive M.B.C.</p>
-          </figcaption>
-        </figure>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SUBSCRIBE -->
-  <section class="subscribe">
-    <div class="container">
-      <h2>Never miss what's coming up.</h2>
-      <p>Add the Good News calendar to your phone or email, and stay in step with the life of the church.</p>
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" class="btn btn-primary">Add to Google Calendar</a>
-        <a href="#" class="btn btn-outline">Subscribe via iCal</a>
-      </div>
+      <div class="flyer-grid" id="flyer-wall"></div>
     </div>
   </section>
 
@@ -436,14 +259,8 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelectorAll('.pill').forEach(p => {
-      p.addEventListener('click', () => {
-        document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
-        p.classList.add('active');
-      });
-    });
-  </script>
+  <script src="events-data.js"></script>
+  <script src="js/events.js"></script>
 
 </body>
 </html>

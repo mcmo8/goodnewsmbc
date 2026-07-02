@@ -1,6 +1,30 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 1, 2026 (session 2 updates below)
+Last updated: July 1, 2026 (session 3 updates below)
+
+## Session 3 updates (July 1, 2026, later)
+- EVENTS ARE NOW DATA-DRIVEN with auto-expiry. Three pieces:
+  - events-data.js (repo root): one object per event, the ONLY file that
+    changes when an event is added. Real events only; all fake/sample
+    events were deleted per Mike.
+  - js/events.js: renderer. Future dates = upcoming (soonest becomes the
+    featured Next Up card; if the event has a flyer, the flyer IS the
+    featured image). Past dates move to the "Recently at Good News"
+    flyer wall automatically and fall off after 180 days
+    (PAST_WINDOW_DAYS). Empty upcoming = friendly "join us Sunday" state.
+  - events.html + index.html render from containers (#featured-slot,
+    #events-list, #flyer-wall, #home-events).
+- "Add to Calendar" buttons generate real Google Calendar template links.
+- Removed per Mike: Live from Google Sheets pill, the fake "This Summer"
+  events, the Google Calendar / iCal subscribe section.
+- Hero ribbon: dots removed, items centered, symmetric 3-column layout.
+- Real flyer images are in images/flyers/ (Mike replaced the placeholders).
+- GOTCHA (tooling, not site): use var-style or bash-side writes for JS
+  files; a truncated sync once broke js/events.js silently. Also
+  events-data.js must stay a plain script (const is fine; renderer reads
+  it via typeof, not window.*).
+- NEXT UP: the flyer extraction pipeline (email/bulletin -> events-data.js
+  entry + flyer image), then hosting/DNS cutover.
 
 ## Session 2 updates (July 1, 2026)
 - SOURCE OF TRUTH: the church's evergreen "You're Invited" Facebook flyer.
