@@ -69,8 +69,8 @@
     /* QR section */
     .qr-section { padding: 110px 0; background: var(--cream-2); }
     .qr-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
-      margin-top: 50px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px;
+      margin-top: 50px; max-width: 620px;
     }
     .qr-card {
       background: var(--white); border: 1px solid var(--line);
@@ -106,8 +106,7 @@
       font-weight: 700; font-size: 18px;
     }
     .ico-cashapp { background: #00D632; color: white; }
-    .ico-venmo { background: #3D95CE; color: white; }
-    .ico-paypal { background: #003087; color: #FFC439; }
+    .ico-zelle { background: #6D1ED4; color: white; }
 
     /* How to give steps */
     .steps-block { padding: 110px 0; }
@@ -269,7 +268,7 @@
       <div>
         <span class="eyebrow">Other Ways to Give</span>
         <h2 class="section-title">Use the payment app you already trust.</h2>
-        <p class="section-lead">Scan a QR code with your phone to give through Cash App, Venmo, or PayPal. Same generosity, your preferred platform.</p>
+        <p class="section-lead">Scan a QR code with your phone to give through Cash App or Zelle. Same generosity, your preferred platform.</p>
       </div>
 
       <div class="qr-grid">
@@ -286,25 +285,14 @@
         </div>
 
         <div class="qr-card">
-          <div class="qr-platform-ico ico-venmo">V</div>
-          <div class="platform-name">Venmo</div>
-          <div class="handle">@GoodNewsMBC</div>
+          <div class="qr-platform-ico ico-zelle">Z</div>
+          <div class="platform-name">Zelle</div>
+          <div class="handle">Handle pending confirmation</div>
           <div class="qr-placeholder">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
             <div class="qr-label">QR Code Here</div>
           </div>
-          <div style="font-size: 13px; color: var(--muted);">Scan with the Venmo app</div>
-        </div>
-
-        <div class="qr-card">
-          <div class="qr-platform-ico ico-paypal">P</div>
-          <div class="platform-name">PayPal</div>
-          <div class="handle">paypal.me/GoodNewsMBC</div>
-          <div class="qr-placeholder">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
-            <div class="qr-label">QR Code Here</div>
-          </div>
-          <div style="font-size: 13px; color: var(--muted);">Scan with your camera app</div>
+          <div style="font-size: 13px; color: var(--muted);">Scan with your banking app</div>
         </div>
 
       </div>
@@ -316,7 +304,7 @@
         </div>
         <div>
           <h4>For Mike: QR codes need to be dropped in</h4>
-          <p>The three QR codes on the current live site (Give page) show as broken/placeholder images so I could not extract them. Platform handles above (Cash App, Venmo, PayPal) are placeholders pending confirmation from the church. Confirm with Pastor Morrison which platforms they use and what the handles are, and we'll swap the QR code images and update the handles. This banner removes in production.</p>
+          <p>Pastor Morrison confirmed (7/3/26): keep Realm, Cash App, and Zelle; PayPal and Venmo are out. Cash App handle above ($GoodNewsMBC) is still a placeholder pending confirmation, and the Zelle handle (phone or email tied to the church's Zelle account) still needs to come from Pastor Morrison. Once both are confirmed, swap in the real QR code images and update the handles. This banner removes in production.</p>
         </div>
       </div>
 

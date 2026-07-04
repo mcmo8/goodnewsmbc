@@ -1,6 +1,29 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 1, 2026 (session 3 updates below)
+Last updated: July 4, 2026 (session 4 updates below)
+
+## Session 4 updates (July 4, 2026)
+- Pastor Morrison replied to the outstanding gifting/bulletin questions (email, 7/3/26):
+  - Printed bulletins: confirmed the church does NOT do weekly printed
+    bulletins; he makes them verbally off the calendar. No site change
+    needed, nothing to build here.
+  - Give page platforms confirmed: keep Realm (already primary), keep
+    Cash App, ADD Zelle, REMOVE PayPal and Venmo. give.html updated:
+    Venmo/PayPal QR cards deleted, Zelle QR card added, qr-grid now
+    2-column, admin banner updated to reflect the confirmed platform
+    list. STILL OPEN: Cash App handle ($GoodNewsMBC) is a placeholder,
+    and Zelle handle (phone or email) has not been given yet -- both
+    still needed before the QR codes can be real.
+  - Virtual-connect info added to index.html: pastor pointed to the
+    evergreen "You're Invited" flyer's phone/video info and said the
+    home page could use it too. Added a Worship by Phone / Worship
+    Online row to the home page schedule card (matches visit.html) plus
+    a "Join Online" button, hyperlinked to
+    https://join.freeconferencecall.com/goodnewsmbc.
+  - Pastor also offered to send a flyer for upcoming events and more
+    photos. Not yet received; when it arrives, feed it into the flyer
+    extraction pipeline (still not built, see Session 3 notes) and/or
+    drop new photos into images/.
 
 ## Session 3 updates (July 1, 2026, later)
 - EVENTS ARE NOW DATA-DRIVEN with auto-expiry. Three pieces:
