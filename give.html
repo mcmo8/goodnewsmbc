@@ -87,18 +87,16 @@
       font-size: 13px; color: var(--muted); margin-bottom: 22px;
       letter-spacing: 0.04em;
     }
-    .qr-placeholder {
+    .qr-img-wrap {
       width: 180px; height: 180px;
-      background: var(--cream);
-      border: 2px dashed var(--line-strong);
+      background: var(--white);
+      border: 1px solid var(--line-strong);
       border-radius: var(--radius);
       margin: 0 auto 22px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: var(--muted-soft);
-      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 12px;
     }
-    .qr-placeholder svg { width: 36px; margin-bottom: 6px; }
-    .qr-placeholder .qr-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+    .qr-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
     .qr-platform-ico {
       width: 36px; height: 36px; border-radius: var(--radius);
       display: inline-flex; align-items: center; justify-content: center;
@@ -173,25 +171,6 @@
       font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--oxblood); font-weight: 600;
     }
-
-    /* Internal note (for Mike, removed in production) */
-    .mike-note {
-      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-      border: 1px solid #F59E0B;
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin: 50px 0;
-      display: flex; gap: 18px; align-items: flex-start;
-    }
-    .mike-note-ico {
-      width: 44px; height: 44px; border-radius: var(--radius);
-      background: rgba(180, 83, 9, 0.15);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .mike-note-ico svg { width: 22px; color: #B45309; }
-    .mike-note h4 { font-family: 'Fraunces', serif; font-size: 17px; color: #78350F; margin-bottom: 4px; }
-    .mike-note p { font-size: 13.5px; color: #78350F; line-height: 1.6; }
 
     @media (max-width: 920px) {
       .primary-give-inner { grid-template-columns: 1fr; gap: 30px; }
@@ -276,10 +255,9 @@
         <div class="qr-card">
           <div class="qr-platform-ico ico-cashapp">$</div>
           <div class="platform-name">Cash App</div>
-          <div class="handle">$GoodNewsMBC</div>
-          <div class="qr-placeholder">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
-            <div class="qr-label">QR Code Here</div>
+          <div class="handle">$GoodNewsMBCTracy</div>
+          <div class="qr-img-wrap">
+            <img src="images/cash_app_qr.webp" alt="Cash App QR code for $GoodNewsMBCTracy" />
           </div>
           <div style="font-size: 13px; color: var(--muted);">Scan with your camera app</div>
         </div>
@@ -287,27 +265,14 @@
         <div class="qr-card">
           <div class="qr-platform-ico ico-zelle">Z</div>
           <div class="platform-name">Zelle</div>
-          <div class="handle">Handle pending confirmation</div>
-          <div class="qr-placeholder">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zm0 10h6v6h-6v-6zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm-4 4h2v2H4v-2zm4 0h2v2H8v-2z"/></svg>
-            <div class="qr-label">QR Code Here</div>
+          <div class="handle">gnmbctracy@att.net</div>
+          <div class="qr-img-wrap">
+            <img src="images/zelle_qr.webp" alt="Zelle QR code for Good News Missionary Baptist Church" />
           </div>
           <div style="font-size: 13px; color: var(--muted);">Scan with your banking app</div>
         </div>
 
       </div>
-
-      <!-- Internal note for Mike -->
-      <div class="mike-note">
-        <div class="mike-note-ico">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div>
-          <h4>For Mike: QR codes need to be dropped in</h4>
-          <p>Pastor Morrison confirmed (7/3/26): keep Realm, Cash App, and Zelle; PayPal and Venmo are out. Cash App handle above ($GoodNewsMBC) is still a placeholder pending confirmation, and the Zelle handle (phone or email tied to the church's Zelle account) still needs to come from Pastor Morrison. Once both are confirmed, swap in the real QR code images and update the handles. This banner removes in production.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 

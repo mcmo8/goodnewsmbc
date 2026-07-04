@@ -38,6 +38,9 @@
     }
     /* Events preview section needs navy background (was ink) */
     .events-preview-section { background: var(--navy); color: var(--cream); }
+    /* Highlighted hero CTA for the online worship livestream */
+    .btn-highlight { background: var(--gold-soft); color: var(--ink); border-color: var(--gold-soft); }
+    .btn-highlight:hover { background: var(--gold); border-color: var(--gold); }
   </style>
 </head>
 <body>
@@ -79,6 +82,7 @@
         <p class="hero-verse-attr">John 3:30</p>
         <div class="hero-ctas">
           <a href="visit.html" class="btn btn-primary">Plan Your Visit</a>
+          <a href="https://join.freeconferencecall.com/goodnewsmbc" target="_blank" class="btn btn-highlight">Join Us Online</a>
           <a href="events.html" class="btn btn-outline-light">See Upcoming Events</a>
         </div>
       </div>
@@ -89,13 +93,13 @@
         <div class="strip-item">
           <div>
             <span class="lbl">Sunday</span>
-            <span class="val">School 9:00 AM &nbsp;·&nbsp; Worship 10:00 AM</span>
+            <span class="val">Sunday School 9:00 AM &nbsp;·&nbsp; Worship 10:00 AM</span>
           </div>
         </div>
         <div class="strip-item">
           <div>
             <span class="lbl">Mid-Week</span>
-            <span class="val">Tue Choir 7 PM &nbsp;·&nbsp; Wed Prayer 12 PM &amp; Bible Study 7 PM</span>
+            <span class="val">Wed Bible Study 7:00 PM</span>
           </div>
         </div>
         <div class="strip-item">
@@ -107,6 +111,32 @@
       </div>
     </div>
   </header>
+
+  <!-- PASTOR -->
+  <section class="block" style="background: var(--cream-2);">
+    <div class="container">
+      <div class="two-col two-col-flip">
+        <div class="framed-img tall">
+          <img src="images/pastor-wife.png" alt="Pastor Tyrone L. Morrison II and First Lady Doretha Morrison" />
+        </div>
+        <div>
+          <span class="eyebrow">Our Pastor</span>
+          <h2 class="section-title">Pastor Tyrone L. Morrison II</h2>
+          <p class="pull-quote">
+            "My life is worth nothing unless I use it for doing the work assigned to me by the Lord Jesus, the work of telling others the Good News about God's wonderful kindness and love."
+            <span class="pull-quote-attr">Acts 20:24 (NLT)</span>
+          </p>
+          <div class="prose">
+            <p>Pastor Morrison was born and raised in Los Angeles, California. He accepted Christ at age eight and has served the Christian community most of his life. After being ordained as a deacon in Oakland in 1993, licensed to preach in 2003, and ordained as a minister in 2005, he united with Good News in 2011 as associate pastor under Pastor B. Carl Edwards.</p>
+            <p>On March 3, 2018, after much prayer and consideration, Pastor Morrison accepted the call to serve as Senior Pastor. He shepherds Good News alongside his wife and First Lady, Doretha Morrison, with conviction, compassion, and a commitment to making the gospel plain.</p>
+          </div>
+          <div style="margin-top: 28px;">
+            <a href="about.html" class="btn-ghost">Read his full story</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- WELCOME -->
   <section class="block">
@@ -133,32 +163,6 @@
           </div>
           <div class="welcome-actions">
             <a href="about.html" class="btn-ghost">Read our full story</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PASTOR -->
-  <section class="block" style="background: var(--cream-2);">
-    <div class="container">
-      <div class="two-col two-col-flip">
-        <div class="framed-img tall">
-          <img src="images/pastor-wife.png" alt="Pastor Tyrone L. Morrison II and First Lady Doretha Morrison" />
-        </div>
-        <div>
-          <span class="eyebrow">Our Pastor</span>
-          <h2 class="section-title">Pastor Tyrone L. Morrison II</h2>
-          <p class="pull-quote">
-            "My life is worth nothing unless I use it for doing the work assigned to me by the Lord Jesus, the work of telling others the Good News about God's wonderful kindness and love."
-            <span class="pull-quote-attr">Acts 20:24 (NLT)</span>
-          </p>
-          <div class="prose">
-            <p>Pastor Morrison was born and raised in Los Angeles, California. He accepted Christ at age eight and has served the Christian community most of his life. After being ordained as a deacon in Oakland in 1993, licensed to preach in 2003, and ordained as a minister in 2005, he united with Good News in 2011 as associate pastor under Pastor B. Carl Edwards.</p>
-            <p>On March 3, 2018, after much prayer and consideration, Pastor Morrison accepted the call to serve as Senior Pastor. He shepherds Good News alongside his wife and First Lady, Doretha Morrison, with conviction, compassion, and a commitment to making the gospel plain.</p>
-          </div>
-          <div style="margin-top: 28px;">
-            <a href="about.html" class="btn-ghost">Read his full story</a>
           </div>
         </div>
       </div>
@@ -243,8 +247,6 @@
             <div style="display: grid; grid-template-columns: auto 1fr; gap: 14px 20px; font-size: 14.5px;">
               <strong style="color: var(--oxblood);">Sunday School</strong> <span>9:00 AM</span>
               <strong style="color: var(--oxblood);">Worship Service</strong> <span>10:00 AM</span>
-              <strong style="color: var(--oxblood);">Choir Rehearsal</strong> <span>Tuesday · 7:00 PM</span>
-              <strong style="color: var(--oxblood);">Noon Prayer</strong> <span>Wednesday · 12:00 PM</span>
               <strong style="color: var(--oxblood);">Bible Study</strong> <span>Wednesday · 7:00 PM</span>
             </div>
             <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 14px 20px; font-size: 14.5px;">
@@ -255,7 +257,6 @@
           <p style="margin-top: 18px; font-size: 14px; color: var(--muted);">Can't make it in person? Join us by phone or video. Every service, same Word, wherever you are.</p>
           <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
             <a href="visit.html" class="btn btn-primary">Get Directions</a>
-            <a href="https://join.freeconferencecall.com/goodnewsmbc" target="_blank" class="btn btn-outline">Join Online</a>
             <a href="https://www.facebook.com/GNMBCTracy77/" target="_blank" class="btn btn-outline">Follow on Facebook</a>
           </div>
         </div>

@@ -1,6 +1,73 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 4, 2026 (session 4 updates below)
+Last updated: July 4, 2026 (session 6 updates below)
+
+## Session 6 updates (July 4, 2026, later still)
+- Mike reversed course on session 5's Realm-only give page: keep the
+  Cash App/Zelle QR section after all. He dropped real QR images into
+  images/ (cash_app_qr.webp, zelle_qr.webp). Decoded both with
+  cv2/zxing-cpp to confirm the real handles instead of guessing:
+  Cash App = $GoodNewsMBCTracy (from the cash.app/$goodnewsmbctracy
+  URL encoded in the QR), Zelle = gnmbctracy@att.net (from the JSON
+  payload in the Zelle enrollment QR). give.html now shows the real
+  QR images in place of the old dashed placeholders, with the 3-step
+  how-to block restored. No more "pending confirmation" banner needed,
+  the QR images are the real thing.
+- Home page virtual-connect: added a highlighted gold "Join Us Online"
+  button (.btn-highlight) in the hero CTA row, linking to
+  https://join.freeconferencecall.com/goodnewsmbc. Removed the
+  duplicate plain "Join Online" outline button further down the page
+  (Plan Your Visit section) since the hero button now covers that --
+  kept the detailed phone/conference-ID rows there since the hero
+  button alone doesn't convey the call-in option.
+- SERVICE TIMES TRIMMED TO MATCH THE FLYER EXACTLY: the evergreen
+  "You're Invited" flyer only lists Sunday School 9 AM, Sunday Worship
+  10 AM, and Wednesday Night 7 PM. Removed Tuesday Choir Rehearsal from
+  index.html hero strip, index.html home schedule card, and visit.html
+  schedule grid (visit.html Bible Study card is full-width again now
+  that Choir Rehearsal is gone, mirrors what happened when Noon Prayer
+  was removed). Left Choir Rehearsal alone on ministries.html (the
+  "Choir Rehearsals Tuesday 7 PM" chip describes the choir ministry
+  itself, different context from the general service-times schedule)
+  and left images/choir.png as a stock photo reference on a ministry
+  card, unrelated to schedule text.
+- Mike is following up with the pastor for: (1) which Google account
+  the shared calendar lives under, since it's not the one connected
+  here, and (2) whether a non-flyer-app raw version of the invite
+  graphic exists, in case the home-page-flyer-embed option ever gets
+  picked up later.
+
+## Session 5 updates (July 4, 2026, later)
+- Mike reviewed session 4's give.html changes and simplified further:
+  the Cash App/Zelle QR section, its CSS, and the "How to Give Using
+  the QR Codes" steps block are all DELETED. give.html is now just
+  Realm (primary) + Give by Mail + verse banner. Reasoning: no real
+  handles or QR images exist yet, so a Realm-only page beats a page
+  with placeholder QR codes. Cash App/Zelle can come back as a real
+  section once the church gives us actual handles and QR images --
+  don't rebuild from memory, ask for the current live give.html
+  history if reviving this.
+- SCHEDULE CORRECTION (Mike, not the pastor): there is no Wednesday
+  noon prayer. Wednesdays are Bible Study 7 PM only. Removed "Noon
+  Prayer" from index.html hero strip, index.html home schedule card,
+  and visit.html schedule grid (Bible Study card no longer needs the
+  full-width span now that Noon Prayer is gone). variant2.html
+  (archived draft, not live) still says Noon Prayer -- left alone,
+  matches the "don't touch archived drafts" rule from session 2.
+- CALENDAR INTEGRATION -- BLOCKED: Mike said to use the Google
+  Calendar the pastor shared access to (mentioned in the pastor's
+  email thread) since Mike keeps it updated. Checked the connected
+  Google Calendar account and only see mdmoore@sakaoneenterprises.com
+  and the US Holidays calendar -- no Good News / GNMBC calendar is
+  visible. The pastor likely shared it with a different email address
+  than the one connected here. NEED FROM MIKE: which account has the
+  share (or the calendar's ID/share link) so events.html/index.html
+  can pull from it instead of the flyer-scrape plan in Session 3.
+- HOME PAGE FLYER PLACEMENT: pastor suggested the evergreen "You're
+  Invited" flyer graphic itself could work on the home page. Gave Mike
+  two options in chat (extracted info in the existing schedule card vs.
+  embedding the actual flyer image as its own section) with a visual
+  mockup; decision pending Mike's pick.
 
 ## Session 4 updates (July 4, 2026)
 - Pastor Morrison replied to the outstanding gifting/bulletin questions (email, 7/3/26):
