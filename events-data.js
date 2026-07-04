@@ -47,7 +47,76 @@ const GNMBC_EVENTS = [
     flyer: "images/flyers/pastor-appreciation-2026-05-17.jpg",
     note: "",
     sample: false
+  },
+
+  /* ---------- Pulled from the church Google Calendar (Jul 4, 2026) ----------
+     Titles, dates, and times are as they appear on the calendar. Descriptions
+     are intentionally brief; each carries a "Confirm with church office" note
+     until the pastor's team can supply flyer-level detail. ---------- */
+  {
+    id: "mt-carmel-prayer-breakfast-2026-07-11",
+    title: "Mt. Carmel Prayer Breakfast",
+    date: "2026-07-11",
+    time: "9:00 AM",
+    location: "Mt. Carmel",
+    category: "Fellowship",
+    tags: ["outreach"],
+    description: "A morning of prayer and fellowship alongside Mt. Carmel.",
+    flyer: "",
+    note: "Confirm with church office",
+    sample: false
+  },
+  {
+    id: "wmu-meeting-2026-07-11",
+    title: "WMU Meeting",
+    date: "2026-07-11",
+    time: "10:00 AM",
+    location: "Good News MBC",
+    category: "Women's Ministry",
+    tags: ["womens"],
+    description: "Women's Missionary Union meeting.",
+    flyer: "",
+    note: "Confirm with church office",
+    sample: false
+  },
+  {
+    id: "third-baptist-church-2026-07-12",
+    title: "Third Baptist Church",
+    date: "2026-07-12",
+    time: "3:00 PM",
+    location: "Third Baptist Church",
+    category: "Fellowship",
+    tags: ["outreach"],
+    description: "A joint gathering with Third Baptist Church.",
+    flyer: "",
+    note: "Confirm with church office",
+    sample: false
+  },
+  {
+    id: "mens-meeting-2026-07-18",
+    title: "Men's Meeting",
+    date: "2026-07-18",
+    time: "9:00 AM",
+    location: "Good News MBC",
+    category: "Men's Ministry",
+    tags: ["mens"],
+    description: "Men's Ministry meeting.",
+    flyer: "",
+    note: "Confirm with church office",
+    sample: false
+  },
+  {
+    id: "church-meeting-2026-07-18",
+    title: "Church Meeting",
+    date: "2026-07-18",
+    time: "10:00 AM",
+    location: "Good News MBC",
+    category: "Church Business",
+    tags: ["worship"],
+    description: "General church meeting.",
+    flyer: "",
+    note: "Confirm with church office",
+    sample: false
   }
 
 ];
-

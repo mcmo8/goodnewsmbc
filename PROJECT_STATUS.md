@@ -1,6 +1,62 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 4, 2026 (session 6 updates below)
+Last updated: July 4, 2026 (session 7 updates below)
+
+## Session 7 updates (July 4, 2026, evening)
+- CALENDAR INTEGRATION -- UNBLOCKED: the pastor sent a Google Calendar
+  embed link. Decoded the four base64 src values in it: his personal
+  Gmail (tyronemorrisonii@gmail.com), an old Berkeley.edu account
+  (tyronem@berkeley.edu), the generic US holidays calendar, and
+  naitia333hlj7pv708hk39kps4@group.calendar.google.com -- the actual
+  dedicated "GoodNews MBC Calendar." Test-loaded that one calendar ID
+  standalone (calendar.google.com/calendar/embed) and confirmed it's
+  genuinely public, no login required, showing weekly Sunday School
+  9am, Sunday Service 10am, Choir Rehearsal Tue 6pm, Bible Study Wed
+  7pm, plus one-off items. Did NOT touch or preview the personal
+  Gmail/Berkeley calendars -- embedding the pastor's raw link as-is
+  would have put his personal schedule on the public site, so only
+  the group calendar (optionally + holidays, currently left out) is
+  embedded. Flagged this to Mike before building anything.
+- CHOIR REHEARSAL CORRECTED: the live calendar shows it recurring
+  every Tuesday at 6pm, not 7pm like the old site copy said, and not
+  absent like the flyer-only schedule assumed after last session's
+  trim. Per Mike: restore it, but ONLY on the events page (not the
+  home page, not visit.html, not the main schedule). Implemented by
+  embedding the calendar iframe on events.html only -- the recurring
+  item shows up automatically there and nowhere else, no separate
+  schedule edit needed.
+- events.html: added a "Full church calendar" section (iframe embed
+  of the GoodNews MBC Calendar only, showTabs/showCalendars/showTz
+  all off for a clean single-purpose widget) between the curated
+  "Coming up" cards and the "Recently at Good News" flyer wall.
+- Tagged 5 new one-off events straight from the calendar into
+  events-data.js so they're filterable by the existing pills (Mt.
+  Carmel Prayer Breakfast, WMU Meeting, Third Baptist Church -> tag
+  outreach/womens; Men's Meeting -> mens; Church Meeting -> worship
+  as a catch-all). Descriptions are intentionally thin with a
+  "Confirm with church office" note since only the calendar's title/
+  date/time is confirmed, not full details. Choir Rehearsal was
+  deliberately NOT added here since it's a recurring weekly item, not
+  a single dated event, and per Mike it should only surface via the
+  events-page calendar, not duplicate onto the home page preview
+  (which pulls from this same array).
+- GOTCHA HIT AGAIN, WORSE THAN EXPECTED: writing files (both
+  events-data.js AND this file) through the Windows-path Edit tool
+  produced a version that Read (Windows side) shows as complete and
+  correct, but the Linux bash mount reads a stale/truncated snapshot
+  that does NOT converge even after several seconds' wait. For
+  events-data.js this was confirmed as a real problem (node -c failed
+  reading the bash-mounted copy). Fix used both times: rewrite the
+  full file fresh with Write to the scratch outputs folder, then `cp`
+  it into the repo from bash, so both sides agree. Rule going forward:
+  after any Edit-tool write to a file in this repo, verify with a bash
+  read (not just the Read tool) before trusting it, and if bash shows
+  something different or truncated, rewrite + cp instead of re-editing.
+- STILL OPEN: which Google account has the personal calendars shared
+  under is now moot (we're using the public group calendar instead,
+  no account access needed). Still waiting on: real descriptions for
+  the 5 new calendar-sourced events, and whether Mike wants the US
+  holidays layer added to the embed.
 
 ## Session 6 updates (July 4, 2026, later still)
 - Mike reversed course on session 5's Realm-only give page: keep the
