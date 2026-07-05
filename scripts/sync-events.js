@@ -30,6 +30,15 @@
       reviews auto-tagged events (especially anything tagged "needs-review")
       before they go live.
 
+   4. All display dates/times are computed in America/Los_Angeles explicitly
+      via Intl.DateTimeFormat, never via Date.getHours()/getDate()/etc.
+      Those methods return the RUNNING PROCESS's local time zone, which is
+      UTC on GitHub's hosted runners, not Pacific. Using them directly
+      caused every synced event to display 7 hours ahead of the real time
+      (confirmed: Mt. Carmel Prayer Breakfast synced as 4:00 PM instead of
+      9:00 AM, the exact UTC-to-PDT offset). Do not reintroduce raw
+      getHours()/getDate() calls on event start times.
+
    Requires env var CHURCH_CALENDAR_ICS_URL (the calendar's private secret
    iCal address — never commit this value, it's stored as a GitHub Actions
    secret).
@@ -42,6 +51,7 @@ const ical = require("node-ical");
 const EVENTS_FILE = path.join(__dirname, "..", "events-data.js");
 const LOOKAHEAD_DAYS = 180;   // how far into the future to pull one-off events
 const PAST_TRAIL_DAYS = 30;   // how long a passed auto-synced event lingers before pruning
+const EVENT_TIMEZONE = "America/Los_Angeles"; // the church's actual timezone, not the runner's
 
 const DEFAULT_LOCATION = "Good News MBC";
 const DEFAULT_DESCRIPTION = "Details to be confirmed. Contact the church office for more information.";
@@ -72,21 +82,56 @@ function slugify(str) {
     .slice(0, 60);
 }
 
+/* Reads year/month/day/hour/minute for a Date instant AS SEEN in
+   EVENT_TIMEZONE, regardless of what time zone the running process is in. */
+function getZonedParts(d) {
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: EVENT_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  const parts = {};
+  for (const p of fmt.formatToParts(d)) parts[p.type] = p.value;
+  // Some Intl implementations report midnight as hour "24" under hour12:false.
+  const hour = parts.hour === "24" ? 0 : Number(parts.hour);
+  return {
+    year: Number(parts.year),
+    month: Number(parts.month),
+    day: Number(parts.day),
+    hour,
+    minute: Number(parts.minute),
+  };
+}
+
 function dateOnly(d) {
-  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  const p = getZonedParts(d);
+  return p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0");
 }
 
 function format12h(d) {
-  let h = d.getHours();
-  const m = d.getMinutes();
+  const p = getZonedParts(d);
+  let h = p.hour;
   const ampm = h >= 12 ? "PM" : "AM";
   h = h % 12;
   if (h === 0) h = 12;
-  return h + ":" + String(m).padStart(2, "0") + " " + ampm;
+  return h + ":" + String(p.minute).padStart(2, "0") + " " + ampm;
 }
 
 function cleanText(s) {
   return String(s).replace(/\r\n/g, "\n").replace(/\s+/g, " ").trim();
+}
+
+/* A stable per-day boundary marker for window math, anchored to noon UTC on
+   the given Pacific calendar date. Noon UTC always falls safely inside that
+   Pacific day (Pacific-day UTC bounds are roughly 07:00-07:00 or 08:00-08:00
+   depending on DST), so this is immune to the runner's local time zone and
+   to DST edge cases, while staying simple day-granularity arithmetic. */
+function pacificCalendarDayAnchor(year, month, day) {
+  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
 }
 
 /* ---------- Load existing events-data.js and split manual vs. calendar-owned ---------- */
@@ -105,8 +150,9 @@ function loadExisting() {
 /* ---------- Fetch and filter the live calendar feed ---------- */
 async function fetchCalendarEvents(icsUrl) {
   const data = await ical.async.fromURL(icsUrl);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+
+  const todayParts = getZonedParts(new Date());
+  const today = pacificCalendarDayAnchor(todayParts.year, todayParts.month, todayParts.day);
   const windowStart = new Date(today.getTime() - PAST_TRAIL_DAYS * 86400000);
   const windowEnd = new Date(today.getTime() + LOOKAHEAD_DAYS * 86400000);
 
