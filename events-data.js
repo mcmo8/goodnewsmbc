@@ -64,7 +64,7 @@ const GNMBC_EVENTS = [
     id: "poc-church-anniversary-2026-06-28",
     title: "POC - Church Anniversary",
     date: "2026-06-28",
-    time: "10:00 PM",
+    time: "3:00 PM",
     location: "People of Christ BC",
     category: "Uncategorized",
     tags: ["needs-review"],
@@ -76,25 +76,10 @@ const GNMBC_EVENTS = [
   },
 
   {
-    id: "mt-carmel-prayer-breakfast-2026-07-11",
-    title: "Mt. Carmel Prayer Breakfast",
-    date: "2026-07-11",
-    time: "4:00 PM",
-    location: "Good News MBC",
-    category: "Fellowship",
-    tags: ["outreach"],
-    description: "Details to be confirmed. Contact the church office for more information.",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
     id: "wmu-meeting-2026-07-11",
     title: "WMU Meeting",
     date: "2026-07-11",
-    time: "5:00 PM",
+    time: "10:00 AM",
     location: "Good News MBC",
     category: "Women's Ministry",
     tags: ["womens"],
@@ -106,10 +91,25 @@ const GNMBC_EVENTS = [
   },
 
   {
+    id: "mt-carmel-prayer-breakfast-2026-07-11",
+    title: "Mt. Carmel Prayer Breakfast",
+    date: "2026-07-11",
+    time: "9:00 AM",
+    location: "Good News MBC",
+    category: "Fellowship",
+    tags: ["outreach"],
+    description: "Details to be confirmed. Contact the church office for more information.",
+    flyer: "",
+    note: "",
+    sample: false,
+    source: "calendar"
+  },
+
+  {
     id: "third-baptist-church-2026-07-12",
     title: "Third Baptist Church",
     date: "2026-07-12",
-    time: "10:00 PM",
+    time: "3:00 PM",
     location: "Third Baptist Church",
     category: "Uncategorized",
     tags: ["needs-review"],
@@ -121,25 +121,10 @@ const GNMBC_EVENTS = [
   },
 
   {
-    id: "church-meeting-2026-07-18",
-    title: "Church Meeting",
-    date: "2026-07-18",
-    time: "5:00 PM",
-    location: "Good News MBC",
-    category: "Worship",
-    tags: ["worship"],
-    description: "Details to be confirmed. Contact the church office for more information.",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
     id: "men-s-meeting-2026-07-18",
     title: "Men's Meeting",
     date: "2026-07-18",
-    time: "4:00 PM",
+    time: "9:00 AM",
     location: "Good News MBC",
     category: "Men's Ministry",
     tags: ["mens"],
@@ -151,10 +136,25 @@ const GNMBC_EVENTS = [
   },
 
   {
+    id: "church-meeting-2026-07-18",
+    title: "Church Meeting",
+    date: "2026-07-18",
+    time: "10:00 AM",
+    location: "Good News MBC",
+    category: "Worship",
+    tags: ["worship"],
+    description: "Details to be confirmed. Contact the church office for more information.",
+    flyer: "",
+    note: "",
+    sample: false,
+    source: "calendar"
+  },
+
+  {
     id: "third-baptist-church-2026-08-30",
     title: "Third Baptist Church",
     date: "2026-08-30",
-    time: "10:00 PM",
+    time: "3:00 PM",
     location: "Third Baptist Church",
     category: "Uncategorized",
     tags: ["needs-review"],
