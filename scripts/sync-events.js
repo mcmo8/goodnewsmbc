@@ -134,9 +134,11 @@ async function fetchCalendarEvents(icsUrl) {
       tags: [tag],
       description: ev.description ? cleanText(ev.description) : DEFAULT_DESCRIPTION,
       flyer: "",
-      note: tag === "needs-review"
-        ? "Auto-synced — please verify category and details"
-        : "Auto-synced from church calendar",
+      // Public-facing note left blank on purpose: "auto-synced" language is
+      // an internal review cue, not something a visitor needs to see. The
+      // needs-review signal lives in the tags array and the PR body instead,
+      // so nothing is lost by leaving this off the live card.
+      note: "",
       sample: false,
       source: "calendar",
     });
