@@ -1,6 +1,97 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 4, 2026 (session 7 updates below)
+Last updated: July 4, 2026 (session 8 updates below)
+
+## Session 8 updates (July 4, 2026, night)
+- REVERSED THE CALENDAR IFRAME: Mike decided tiles only, no embedded
+  Google Calendar widget on events.html. Removed the calendar section
+  CSS and the section markup (comment header through the closing
+  section tag). events.html now goes straight from the "Coming up"
+  cards to the "Recently at Good News" flyer wall, matching how it
+  looked before session 7's embed. Direct consequence, flagged to
+  Mike at the time: Choir Rehearsal has no surface on the site again,
+  since it was deliberately left out of events-data.js as a recurring
+  weekly item and the iframe was its only home.
+- BUILT AN AUTOMATED EVENTS SYNC, replacing the manual "type each
+  calendar event into events-data.js by hand" workflow. Three new
+  files: scripts/sync-events.js, package.json (node-ical dependency),
+  .github/workflows/sync-events.yml.
+- HOW IT WORKS: the script pulls the church calendar's private feed,
+  skips anything with an RRULE (the standing weekly services already
+  covered by the home page and visit.html schedule cards), and keeps
+  only one-off events within a 30-day trailing to 180-day forward
+  window. Each event gets a tag guessed from its title by keyword
+  rule (women or wmu to womens, men's to mens, youth or teen or kids
+  to youth, outreach or fellowship or breakfast to outreach, worship
+  or service or meeting as the catch-all), falling back to a
+  needs-review tag when nothing matches, so a bad guess never lands
+  silently. events-data.js now carries a source field on every event:
+  manual for hand-curated, flyer-backed entries the script will never
+  touch, or calendar for entries it fully owns and regenerates each
+  run. A missing source field is treated as manual, a safe default so
+  older hand-edits are never destroyed by a future run.
+- REVIEW GATE, NOT AUTO-PUBLISH: the GitHub Action runs weekly (Mike's
+  call, since the church doesn't add events often) and opens a pull
+  request with the diff instead of pushing straight to main. Nothing
+  goes live until a human merges it. Can also be triggered on demand
+  from the repo's Actions tab (workflow_dispatch) without waiting for
+  the schedule.
+- BLOCKER FOUND AND RESOLVED: tested the calendar's public ICS feed
+  (the same naitia333hlj7pv708hk39kps4 calendar confirmed legitimate
+  in session 7) directly against the live URL. It returned every
+  event as a bare "Busy" block with no title, because the calendar's
+  public sharing level is "see only free or busy," not "see all
+  event details." The iframe embed we screenshotted earlier likely
+  showed full detail only because that browser session was signed
+  into a Google account with view access, not because it was truly
+  public at that detail level. Fix: use the calendar's private
+  "secret address in iCal format" instead, which always carries full
+  detail regardless of the public setting, so the pastor's existing
+  privacy configuration stays untouched. Since that address functions
+  like an API key (anyone holding it can read full calendar detail
+  anonymously), Mike retrieved it himself from Google Calendar
+  settings and added it directly as a GitHub Actions secret named
+  CHURCH_CALENDAR_ICS_URL. It was never pasted into this chat or
+  committed to the repo.
+- SAFETY NET ADDED: even with the source field split, the script
+  also checks freshly-fetched calendar events against existing
+  manual ids and skips any collision, so the same event can never
+  render as two duplicate tiles. Verified with a local mock feed
+  covering a recurring event (correctly skipped), a clean tag match,
+  a needs-review fallback, an out-of-window event (correctly
+  excluded), and a deliberate id collision (correctly skipped in
+  favor of the manual entry).
+- CURRENT STATE OF events-data.js: the old 5 hardcoded calendar-stub
+  entries from session 7 were removed. Only the 2 real, flyer-backed
+  events (Women's Sunday, Pastor and Wife Appreciation) remain, both
+  now explicitly tagged source: manual. The calendar section is empty
+  until the first sync runs. Recommend triggering the workflow
+  manually from the Actions tab once these files are merged, rather
+  than waiting up to a week for the first real data to appear.
+- GOTCHA HIT AGAIN, TWO DIFFERENT FLAVORS THIS TIME: events-data.js
+  came back from a Write plus cp with trailing null-byte padding
+  after the real content (stripped with a Python rstrip on b'\x00',
+  same fix as prior sessions). scripts/sync-events.js and this very
+  file both came back genuinely truncated mid-word with no null
+  padding at all, matching byte-for-byte between the outputs copy
+  and the repo copy, meaning the loss happened before either file
+  landed on disk rather than during the cp. A second fresh Write
+  under a brand new filename resolved it both times. No working
+  theory yet for why the same Write action sometimes pads with nulls
+  and sometimes truncates outright; the practical rule stands from
+  before: always verify with a bash byte count and syntax check (or
+  a plain diff against what Read shows) after any Write or cp into
+  this repo, never trust it just because Read or an earlier check
+  looked fine, and if the first Write comes back truncated, retry
+  under a new filename rather than overwriting the same path again.
+- STILL OPEN: the git repository corruption reported in session 7
+  (bad index file sha1 signature, an unexplained "homepage change"
+  commit) has not been touched this session. Mike says nothing else
+  should be working on this repo on his end, which rules out the
+  original external-process theory without giving a new one. He has
+  been pushing successfully through whatever tool he's using outside
+  this session, so these new files still need to be committed and
+  pushed the same way once reviewed.
 
 ## Session 7 updates (July 4, 2026, evening)
 - CALENDAR INTEGRATION -- UNBLOCKED: the pastor sent a Google Calendar

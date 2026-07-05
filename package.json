@@ -1,0 +1,12 @@
+{
+  "name": "goodnewsmbc-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static site for Good News Missionary Baptist Church, plus the automated events calendar sync.",
+  "scripts": {
+    "sync-events": "node scripts/sync-events.js"
+  },
+  "dependencies": {
+    "node-ical": "^0.26.1"
+  }
+}

@@ -1,0 +1,58 @@
+name: Sync Events from Calendar
+
+# Runs weekly, and can also be triggered on demand from the Actions tab
+# ("Run workflow" button) — use that right after this workflow first
+# merges, or any time you don't want to wait for the schedule.
+on:
+  schedule:
+    - cron: "0 13 * * 1" # every Monday, ~6am Pacific (13:00 UTC, PDT)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-events:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run calendar sync
+        env:
+          CHURCH_CALENDAR_ICS_URL: ${{ secrets.CHURCH_CALENDAR_ICS_URL }}
+        run: npm run sync-events
+
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Sync events from church calendar"
+          title: "Weekly calendar sync: update events-data.js"
+          body: |
+            Automated pull request from the weekly calendar sync.
+
+            This regenerates the auto-synced section of `events-data.js` from
+            the church's private calendar feed. Please review before merging:
+
+            - New one-off events and their auto-guessed category tag
+            - Anything tagged `needs-review` (the script couldn't confidently
+              guess a category from the title)
+            - Auto-synced entries that dropped off (event passed, or was
+              removed/renamed on the calendar)
+
+            Manually added events (flyer-backed, `source: "manual"`) are
+            never touched by this workflow.
+          branch: auto/sync-events
+          delete-branch: true
+          labels: |
+            automated
+            events
