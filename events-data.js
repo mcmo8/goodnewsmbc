@@ -61,11 +61,11 @@ const GNMBC_EVENTS = [
 
   /* ---------- CALENDAR: auto-synced by scripts/sync-events.js, do not hand-edit ---------- */
   {
-    id: "mt-carmel-prayer-breakfast-2026-07-11",
-    title: "Mt. Carmel Prayer Breakfast",
-    date: "2026-07-11",
-    time: "9:00 AM",
-    location: "Transit Station",
+    id: "outing-fellowship-baptist-church-2026-10-11",
+    title: "Outing - Fellowship Baptist Church",
+    date: "2026-10-11",
+    time: "3:00 PM",
+    location: "Fellowship Baptist Church",
     category: "Fellowship",
     tags: ["outreach"],
     description: "Details to be confirmed. Contact the church office for more information.",
@@ -76,39 +76,9 @@ const GNMBC_EVENTS = [
   },
 
   {
-    id: "wmu-meeting-2026-07-11",
-    title: "WMU Meeting",
-    date: "2026-07-11",
-    time: "10:00 AM",
-    location: "Good News MBC",
-    category: "Women's Ministry",
-    tags: ["womens"],
-    description: "Details to be confirmed. Contact the church office for more information.",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
-    id: "third-baptist-church-2026-07-12",
-    title: "Third Baptist Church",
-    date: "2026-07-12",
-    time: "3:00 PM",
-    location: "Third Baptist Church - 721 Gertrude Ave. Stockton, CA",
-    category: "Uncategorized",
-    tags: ["needs-review"],
-    description: "The Call of a Deacon - 1 Tim. 3:8-13",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
-    id: "church-meeting-2026-07-18",
+    id: "church-meeting-2026-10-31",
     title: "Church Meeting",
-    date: "2026-07-18",
+    date: "2026-10-31",
     time: "10:00 AM",
     location: "Good News MBC",
     category: "Worship",
@@ -121,44 +91,14 @@ const GNMBC_EVENTS = [
   },
 
   {
-    id: "men-s-meeting-2026-07-18",
-    title: "Men's Meeting",
-    date: "2026-07-18",
-    time: "9:00 AM",
-    location: "Good News MBC",
-    category: "Men's Ministry",
-    tags: ["mens"],
-    description: "Details to be confirmed. Contact the church office for more information.",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
-    id: "mt-carmel-prayer-breakfast-2026-08-08",
-    title: "Mt. Carmel Prayer Breakfast",
-    date: "2026-08-08",
-    time: "9:00 AM",
-    location: "Transit Station",
+    id: "outing-fellowship-baptist-church-2026-11-14",
+    title: "Outing - Fellowship Baptist Church",
+    date: "2026-11-14",
+    time: "3:00 PM",
+    location: "Fellowship Baptist Church",
     category: "Fellowship",
     tags: ["outreach"],
     description: "Details to be confirmed. Contact the church office for more information.",
-    flyer: "",
-    note: "",
-    sample: false,
-    source: "calendar"
-  },
-
-  {
-    id: "third-baptist-church-2026-08-30",
-    title: "Third Baptist Church",
-    date: "2026-08-30",
-    time: "3:00 PM",
-    location: "Third Baptist Church - 721 Gertrude Ave. Stockton, CA",
-    category: "Uncategorized",
-    tags: ["needs-review"],
-    description: "Pastor & Wife Appreciation",
     flyer: "",
     note: "",
     sample: false,
