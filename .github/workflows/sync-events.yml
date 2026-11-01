@@ -1,19 +1,26 @@
-name: Sync Events from Calendar
+name: Refresh events snapshot from calendar
 
-# Runs weekly, and can also be triggered on demand from the Actions tab
-# ("Run workflow" button) — use that right after this workflow first
-# merges, or any time you don't want to wait for the schedule.
+# The site reads the church calendar LIVE through api/events.js. This job
+# only refreshes the fallback copy in events-data.js so visitors still see
+# recent events if the live read ever fails. It commits straight to main;
+# there is no pull request and nothing for a person to approve.
+#
+# Runs weekly, and can also be run by hand from the Actions tab
+# ("Run workflow" button).
+#
+# Note: GitHub pauses scheduled jobs after 60 days with no commits. If that
+# happens, the live site is unaffected; only this fallback copy gets stale.
+# Re-enable it from the Actions tab.
 on:
   schedule:
-    - cron: "0 13 * * 1" # every Monday, ~6am Pacific (13:00 UTC, PDT)
+    - cron: "0 13 * * 1" # every Monday, about 6am Pacific (13:00 UTC during PDT)
   workflow_dispatch: {}
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
-  sync-events:
+  refresh-snapshot:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -32,27 +39,14 @@ jobs:
           CHURCH_CALENDAR_ICS_URL: ${{ secrets.CHURCH_CALENDAR_ICS_URL }}
         run: npm run sync-events
 
-      - name: Open pull request with changes
-        uses: peter-evans/create-pull-request@v6
-        with:
-          commit-message: "Sync events from church calendar"
-          title: "Weekly calendar sync: update events-data.js"
-          body: |
-            Automated pull request from the weekly calendar sync.
-
-            This regenerates the auto-synced section of `events-data.js` from
-            the church's private calendar feed. Please review before merging:
-
-            - New one-off events and their auto-guessed category tag
-            - Anything tagged `needs-review` (the script couldn't confidently
-              guess a category from the title)
-            - Auto-synced entries that dropped off (event passed, or was
-              removed/renamed on the calendar)
-
-            Manually added events (flyer-backed, `source: "manual"`) are
-            never touched by this workflow.
-          branch: auto/sync-events
-          delete-branch: true
-          labels: |
-            automated
-            events
+      - name: Commit snapshot to main (only if something changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add events-data.js
+          if git diff --cached --quiet; then
+            echo "Snapshot already up to date. Nothing to commit."
+          else
+            git commit -m "Refresh events snapshot from church calendar"
+            git push
+          fi

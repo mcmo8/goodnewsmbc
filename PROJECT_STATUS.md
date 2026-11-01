@@ -1,6 +1,50 @@
 # GNMBC Website Rebuild -- Project Status
 
-Last updated: July 4, 2026 (session 8 updates below)
+Last updated: November 1, 2026 (session 9 updates below)
+
+## Session 9 updates (November 1, 2026)
+- WHY: Pastor emailed that the calendar was way out of date. Root cause
+  was the review gate from session 8, not the calendar. The weekly sync
+  had been producing updates all along (Aug 10, 17, 24, Sep 14, Oct 5,
+  Oct 12) into PR #5, which sat unmerged since the Aug 7 merge of PR #4.
+  Merged PR #5 today via Mike's Chrome; site caught up within a minute.
+- DECISION (Mike): remove Mike from the loop entirely. The pastor's
+  Google Calendar is the source of truth and putting an event on it IS
+  the approval. Pastor to be emailed that this is how it works now and
+  asked whether he wants more visibility (options in the email).
+- BUILT THE LIVE PATH: api/events.js is a Vercel serverless function
+  that reads the private ICS feed on request, cached at the edge for 1
+  hour (stale-while-revalidate 7 days, so a Google hiccup never shows
+  visitors an error). js/events.js now draws from events-data.js first
+  (snapshot) and then calls /api/events; on success it swaps the
+  snapshot's calendar entries for live ones, manual flyer-backed entries
+  always stay. On failure the snapshot stays. Live data is HTML-escaped
+  before rendering since it comes from outside the repo.
+- SHARED LOGIC: all filtering/tagging moved to lib/calendar-events.js,
+  used by both api/events.js and scripts/sync-events.js so the live and
+  snapshot paths cannot drift. Tag rules gained "outing" (outreach) and
+  "anniversary"/"appreciation" (worship). Unmatched titles now get
+  category "Church Event" and tag "general" instead of "Uncategorized"
+  and "needs-review", since there is no reviewer anymore. Default
+  description softened to "Call or email the church office for details."
+- WORKFLOW CHANGED: .github/workflows/sync-events.yml no longer opens a
+  PR. It commits the refreshed snapshot straight to main weekly (only if
+  something changed). It is now purely a fallback; the live site does
+  not depend on it. GitHub pauses scheduled jobs after 60 quiet days;
+  if that happens only the fallback goes stale.
+- TESTED: mock ICS feed through lib + api handler (recurring skipped,
+  window enforced, Pacific times, Church Event fallback, all-day,
+  500 on missing env, 200 with cache header, 502 no-store on bad feed).
+  Headless Chromium against a local server wired like Vercel: both
+  events.html and index.html swap to live data, escaping works, pills
+  still filter after the re-render, manual entries kept, no page errors.
+- NEEDS FROM MIKE (one time): add the Vercel environment variable
+  CHURCH_CALENDAR_ICS_URL (same value as the GitHub Actions secret) for
+  Production and Preview in the Vercel project settings, then redeploy.
+  Until then /api/events returns 500 and the site shows the snapshot.
+- GITHUB ACCESS NOTE: GitHub API calls from the cloud session were not
+  permitted this session; GitHub work was done through Mike's Chrome and
+  git on Mike's machine. Vercel API worked (project prj_bKdpgreAd6hSwhYwsXMJclkzW4aJ).
 
 ## Session 8 updates (July 4, 2026, night)
 - REVERSED THE CALENDAR IFRAME: Mike decided tiles only, no embedded

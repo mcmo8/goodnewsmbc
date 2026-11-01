@@ -15,14 +15,17 @@
      note        small caption on the card (optional)
      sample      true = demo data; hidden when SHOW_SAMPLES=false in js/events.js
      source      "manual" (hand-curated, never touched by the sync script) or
-                 "calendar" (owned by scripts/sync-events.js — regenerated
-                 on every run, do not hand-edit these entries, edits will be
-                 overwritten the next time the sync runs)
+                 "calendar" (owned by the calendar sync; regenerated on every
+                 run, do not hand-edit these entries)
 
-   The "calendar" section below is rebuilt automatically by the weekly
-   GitHub Action (.github/workflows/sync-events.yml), which opens a pull
-   request for review rather than pushing straight to main. Add real,
-   flyer-backed events above the CALENDAR marker with source: "manual".
+   HOW EVENTS REACH THE SITE NOW:
+   The page loads this file first, then asks /api/events for the LIVE
+   calendar (see api/events.js). When the live call works, the "calendar"
+   entries below are replaced on screen by the live ones. When it fails,
+   the entries below are what visitors see. The weekly GitHub Action
+   (.github/workflows/sync-events.yml) refreshes this snapshot and commits
+   it straight to main. Add real, flyer-backed events above the CALENDAR
+   marker with source: "manual".
    ========================================================================== */
 
 const GNMBC_EVENTS = [
