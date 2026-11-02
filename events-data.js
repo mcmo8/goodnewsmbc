@@ -62,7 +62,7 @@ const GNMBC_EVENTS = [
   },
 
 
-  /* ---------- CALENDAR: auto-synced by scripts/sync-events.js, do not hand-edit ---------- */
+  /* ---------- CALENDAR: weekly snapshot of the church calendar, do not hand-edit ---------- */
   {
     id: "outing-fellowship-baptist-church-2026-10-11",
     title: "Outing - Fellowship Baptist Church",
@@ -71,7 +71,7 @@ const GNMBC_EVENTS = [
     location: "Fellowship Baptist Church",
     category: "Fellowship",
     tags: ["outreach"],
-    description: "Details to be confirmed. Contact the church office for more information.",
+    description: "Call or email the church office for details.",
     flyer: "",
     note: "",
     sample: false,
@@ -86,7 +86,7 @@ const GNMBC_EVENTS = [
     location: "Good News MBC",
     category: "Women's Ministry",
     tags: ["womens"],
-    description: "Details to be confirmed. Contact the church office for more information.",
+    description: "Call or email the church office for details.",
     flyer: "",
     note: "",
     sample: false,
@@ -101,7 +101,7 @@ const GNMBC_EVENTS = [
     location: "Good News MBC",
     category: "Worship",
     tags: ["worship"],
-    description: "Details to be confirmed. Contact the church office for more information.",
+    description: "Call or email the church office for details.",
     flyer: "",
     note: "",
     sample: false,
@@ -116,7 +116,7 @@ const GNMBC_EVENTS = [
     location: "Fellowship Baptist Church",
     category: "Fellowship",
     tags: ["outreach"],
-    description: "Details to be confirmed. Contact the church office for more information.",
+    description: "Call or email the church office for details.",
     flyer: "",
     note: "",
     sample: false,
